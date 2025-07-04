@@ -1,0 +1,301 @@
+Amass is typically pre-installed on Kali Linux. To confirm it’s installed and check the version, open a terminal and run:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass -version
+This will display the installed version (e.g., v4.2.0). If Amass is not installed, install it using:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+sudo apt update
+sudo apt install amass
+Alternatively, to ensure you have the latest version, you can install it via Go:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+go install -v github.com/owasp-amass/amass/v4/...@master
+The binary will be located in ~/go/bin/amass. Move it to /usr/local/bin/ for system-wide access:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+sudo mv ~/go/bin/amass /usr/local/bin/
+2. Understand Amass Subcommands
+Amass has several subcommands for different purposes. Run amass -h to view them:
+
+intel: Discovers targets (e.g., domains, ASNs) for enumeration.
+enum: Performs DNS enumeration and network mapping.
+viz: Visualizes enumeration results as graphs.
+track: Tracks changes between enumerations.
+db: Manages the Amass graph database.
+Each subcommand has its own help menu (e.g., amass enum -h).
+
+3. Basic Usage
+Here’s how to use Amass for common tasks, focusing on the enum subcommand for subdomain enumeration, which is the most frequently used.
+
+a. Basic Subdomain Enumeration
+To enumerate subdomains for a target domain (e.g., example.com):
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -d example.com
+-d: Specifies the target domain.
+This command performs passive enumeration, querying data sources like DNS, web archives, and APIs.
+Output will list discovered subdomains and may include additional details like IP addresses if specified.
+
+b. Save Output to a File
+To save results to a file (e.g., subdomains.txt):
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -d example.com -o subdomains.txt
+-o: Specifies the output file.
+c. Active Enumeration
+For more aggressive scanning, including brute-forcing and certificate pulling, use the -active flag:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -active -d example.com -ip -src -brute
+-active: Enables active techniques like zone transfers and certificate pulls.
+-ip: Includes IP addresses in the output.
+-src: Shows the data source for each discovered subdomain.
+-brute: Performs brute-force subdomain guessing.
+d. Using a Wordlist for Brute-Forcing
+To use a custom wordlist for brute-forcing subdomains:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -d example.com -brute -w /path/to/wordlist.txt
+-w: Specifies the path to a wordlist (e.g., /usr/share/amass/wordlists/all.txt for a default wordlist).
+e. Reverse Whois Lookup
+To find domains with similar Whois records:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass intel -d example.com -whois
+This can identify other domains potentially owned by the same organization.
+
+f. Enumerate with IP Ranges or ASNs
+To include specific IP ranges or Autonomous System Numbers (ASNs):
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -d example.com -cidr 1.2.3.4/24 -asn 12345
+-cidr: Specifies an IP range in CIDR notation.
+-asn: Targets a specific ASN.
+4. Advanced Features
+a. Visualize Results
+To create a visual graph of the enumeration results:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass viz -d example.com -o output_directory
+This generates visualization files (e.g., GraphML, GEXF) in the specified directory, which can be viewed with tools like Gephi.
+
+b. Track Changes
+To compare enumerations over time:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass track -d example.com
+This tracks new subdomains or changes since the last scan, leveraging Amass’s graph database.
+
+c. Use a Configuration File
+Amass supports a YAML configuration file to customize scans (e.g., API keys, scope). By default, it looks for config.yaml in ~/.config/amass/. Example configuration:
+
+yaml
+
+Collapse
+
+Wrap
+
+Copy
+domains:
+  - example.com
+blacklist:
+  - unwanted.example.com
+resolve:
+  max_dns_queries: 1000
+Run with the config file:
+
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -config ~/.config/amass/config.yaml
+You can find a sample configuration at: https://github.com/owasp-amass/amass/blob/master/examples/config.yaml.
+
+d. Optimize Resource Usage
+Amass can be resource-intensive. To manage performance:
+
+Limit DNS queries: -max-dns-queries 500
+Set a timeout: -timeout 30 (in minutes)
+Scope to specific domains: -df domains.txt (file with target domains)
+5. Best Practices
+Update Regularly: Ensure Amass is up-to-date to leverage new features and data sources:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+sudo apt update && sudo apt upgrade amass
+Use API Keys: Amass integrates with APIs like SecurityTrails, Shodan, and VirusTotal for better results. Add API keys to the configuration file for enhanced data collection.
+Combine with Other Tools: Feed Amass output into tools like nmap or masscan for further analysis.
+Responsible Usage: Only scan domains you have permission to test. Unauthorized scanning may violate laws or terms of service.
+Check Data Sources: List available data sources with:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -list
+This shows the 55+ sources Amass queries, such as AlienVault, Censys, and Google.
+
+6. Example Workflow
+To perform a comprehensive enumeration for example.com:
+
+Run passive enumeration and save results:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -d example.com -o subdomains.txt
+Perform active enumeration with brute-forcing:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass enum -active -d example.com -ip -src -brute -w /usr/share/amass/wordlists/all.txt -o active_subdomains.txt
+Visualize results:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass viz -d example.com -o viz_output
+Track changes in subsequent scans:
+bash
+
+Collapse
+
+Wrap
+
+Run
+
+Copy
+amass track -d example.com
+7. Troubleshooting
+Command Not Found: Ensure Amass is in your $PATH or reinstall it.
+Resource Overload: Reduce DNS queries or use -passive to avoid active techniques.
+No Results: Verify internet connectivity and consider adding API keys for more data sources.
+Permission Issues: Run commands with sudo if necessary, especially for installation.
