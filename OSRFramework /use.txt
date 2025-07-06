@@ -1,0 +1,96 @@
+✅ 1. Install OSRFramework (Kali Linux 2023+ comes with it preinstalled)
+If not installed:
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install osrframework
+🔍 2. Verify installation
+bash
+Copy
+Edit
+osr-search.py -h
+You should see the help menu. If so, you're ready to go.
+
+🔧 3. Tools & How to Use Them
+🔎 A. Username Finder: userfy.py
+Search for a username across dozens of websites:
+
+bash
+Copy
+Edit
+userfy.py -n target_username
+Example:
+
+bash
+Copy
+Edit
+userfy.py -n sabazhaxor
+🔹 Output: Shows presence of the username across social media, forums, code sites, etc.
+
+📧 B. Email Search: mailfy.py
+Check if an email username is used on email providers:
+
+bash
+Copy
+Edit
+mailfy.py -n johndoe
+🌐 C. Domain Finder: domainfy.py
+Check if a name is registered on domain TLDs:
+
+bash
+Copy
+Edit
+domainfy.py -n mrwhitehat
+📱 D. Phone Number Search: phonefy.py
+Search whether a phone number appears online:
+
+bash
+Copy
+Edit
+phonefy.py -n +923001234567
+🧠 E. Entity Search: entify.py
+Check if a name (person, org) appears in various online sources:
+
+bash
+Copy
+Edit
+entify.py -n "Sabaz Ali Khan"
+🧰 F. Comprehensive Search: osr-search.py
+Full suite of all tools in one:
+
+bash
+Copy
+Edit
+osr-search.py -n target_keyword
+Example:
+
+bash
+Copy
+Edit
+osr-search.py -n "mrrobot1337"
+🔄 4. Update the OSRFramework Database
+Keep the OSINT sources updated:
+
+bash
+Copy
+Edit
+osr-update.py
+📝 5. Exporting Results
+Many commands allow output to files:
+
+bash
+Copy
+Edit
+userfy.py -n mrwhitehat -o results.txt
+📌 Pro Tips
+Use -h with any tool to see its options.
+
+Combine with theHarvester or Recon-ng for deeper OSINT.
+
+Ideal for footprinting during penetration testing, investigations, and red team tasks.
+
+⚠️ Legal Notice
+Use OSRFramework only on targets you are legally allowed to investigate. Gathering data on others without consent may violate privacy laws.
+
+Would you like a bash script that automates multiple OSRFramework scans for a target?
