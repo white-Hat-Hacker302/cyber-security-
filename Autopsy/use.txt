@@ -1,0 +1,106 @@
+🔧 How to Install Autopsy on Kali Linux
+It is usually pre-installed in Kali. If it's not:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install autopsy
+🚀 How to Launch Autopsy
+Use the terminal:
+
+bash
+Copy
+Edit
+autopsy
+This will start Autopsy and show a message like:
+
+bash
+Copy
+Edit
+Starting Autopsy Forensic Browser at http://localhost:9999/autopsy
+Open your web browser and visit: http://localhost:9999/autopsy
+
+🧪 Using Autopsy Step-by-Step
+1. Create a New Case
+Click "New Case"
+
+Enter:
+
+Case Name
+
+Case Number (optional)
+
+Examiner Name
+
+Click "Next"
+
+2. Add a Host
+Set a Host Name (e.g., suspect_pc)
+
+Choose timezone
+
+Click Next
+
+3. Add Data Source
+Autopsy accepts:
+
+Disk image (E01, DD, raw, etc.)
+
+Local disk or partition
+
+Logical files or folders
+
+Choose “Add Image File” and:
+
+Set image path
+
+Choose type (e.g., split or single image)
+
+Click Next
+
+4. Run Ingest Modules
+Select modules such as:
+
+Hash Lookup
+
+Keyword Search
+
+File Type Identification
+
+EXIF Parser (for images)
+
+Web Artifacts
+
+Recent Activity
+
+Email Parser
+
+You can enable/disable based on your case.
+
+Click Finish to start analysis.
+
+🔍 What You Can Do With Autopsy
+Feature	Purpose
+File Analysis	View, recover, and hash files
+Timeline	Create event timeline of file changes
+Keyword Search	Search for specific terms
+Email Analysis	Parse and analyze mailbox files
+Web Artifacts	View browser history, cache, cookies
+Metadata Viewer	View image EXIF, document metadata
+Deleted File Recovery	Recover deleted files if not overwritten
+Report Generation	Export PDF/HTML case reports
+
+📂 Example Disk Image to Practice
+Use sample images from:
+
+https://digitalcorpora.org
+
+https://www.evidencelocker.com
+
+🛑 Important Notes
+Autopsy runs locally, but it's a web-based interface.
+
+Don’t analyze evidence on the suspect drive directly—always create and use a forensic image.
+
+Best paired with tools like dd, dcfldd, or FTK Imager for disk imaging.
