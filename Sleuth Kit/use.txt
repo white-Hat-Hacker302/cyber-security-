@@ -1,0 +1,83 @@
+🔧 How to Use Sleuth Kit in Kali Linux
+✅ Step 1: Verify Installation
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install sleuthkit
+🧰 Sleuth Kit Tools Overview (Command Line)
+Here are the most important tools in TSK:
+
+Tool	Use
+mmls	Show partition layout on a disk image
+fls	List files and directories in a partition
+icat	Extract file by inode number
+istat	Show metadata about a file
+img_stat	Display image format and metadata
+tsk_recover	Recover deleted files from an image
+
+🧪 Example Forensic Workflow
+Suppose you have a disk image: disk.img
+
+🔍 Step 1: View Partition Layout
+bash
+Copy
+Edit
+mmls disk.img
+You’ll see output like:
+
+sql
+Copy
+Edit
+Slot    Start       End     Length     Description
+00:00      0000000000 0000002047 0000002048 Primary Table (#0)
+00:01      0000002048 0001023999 0001021952 Linux (0x83)
+The starting sector for the partition is 2048.
+
+🧭 Step 2: List Files in Partition
+bash
+Copy
+Edit
+fls -o 2048 disk.img
+📂 Step 3: Recover File by Inode
+Find an inode number from fls output (e.g., * 128: $FILE_NAME.TXT)
+
+bash
+Copy
+Edit
+icat -o 2048 disk.img 128 > recovered.txt
+🧠 Step 4: View File Metadata
+bash
+Copy
+Edit
+istat -o 2048 disk.img 128
+🔄 Step 5: Recover All Deleted Files
+bash
+Copy
+Edit
+tsk_recover -o 2048 disk.img output_folder/
+🧑‍💻 GUI Option: Autopsy
+Sleuth Kit also powers Autopsy, a GUI frontend.
+
+Install Autopsy:
+bash
+Copy
+Edit
+sudo apt install autopsy
+Then launch it:
+
+bash
+Copy
+Edit
+autopsy
+Access it in your browser at http://localhost:9999.
+
+🔒 Pro Tips:
+Always work on copies of the original image.
+
+Use dd to create forensic copies:
+
+bash
+Copy
+Edit
+dd if=/dev/sdX of=disk.img bs=4M
