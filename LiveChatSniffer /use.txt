@@ -1,0 +1,50 @@
+Steps to Use LiveChatSniffer in Kali Linux
+1. Install Required Dependencies
+Before running LiveChatSniffer, ensure you have the necessary libraries:
+
+bash
+sudo apt update
+sudo apt install libpcap-dev libnet1-dev
+2. Download LiveChatSniffer
+You can find the tool on GitHub or other repositories:
+
+bash
+git clone https://github.com/0x0XFF/LiveChatSniffer.git
+cd LiveChatSniffer
+(If the repo is unavailable, you may need to find an alternative source or precompiled binary.)
+
+3. Compile the Tool (if required)
+If the source code is available, compile it:
+
+bash
+gcc -o LiveChatSniffer LiveChatSniffer.c -lpcap -lnet
+4. Run LiveChatSniffer
+Execute the tool with root privileges (required for packet sniffing):
+
+bash
+sudo ./LiveChatSniffer
+Or, if you have a binary:
+
+bash
+chmod +x LiveChatSniffer
+sudo ./LiveChatSniffer
+5. Select the Network Interface
+The tool should list available interfaces. Choose the one connected to the network you want to monitor (e.g., eth0, wlan0).
+
+6. Monitor Captured Chats
+If any unencrypted chat traffic (e.g., old MSN/Yahoo Messenger) is detected, it will be displayed in the terminal.
+
+Important Notes
+Outdated Tool: Most modern chat apps (WhatsApp, Signal, Telegram) use end-to-end encryption, making this tool ineffective.
+
+Legal & Ethical Considerations:
+
+Sniffing network traffic without permission is illegal in most jurisdictions.
+
+Only use this tool on networks you own or have explicit authorization to test.
+
+Alternatives:
+
+For educational purposes, try Wireshark (sudo wireshark) to analyze network traffic.
+
+For modern pentesting, focus on authorized security assessments using tools like Burp Suite or Bettercap.
