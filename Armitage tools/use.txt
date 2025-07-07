@@ -1,0 +1,77 @@
+🔧 Step-by-Step: How to Use Armitage in Kali Linux
+✅ 1. Start the Metasploit Database
+bash
+Copy
+Edit
+sudo systemctl start postgresql
+sudo msfdb init
+Make sure the database is initialized and running. Armitage needs it to function.
+
+✅ 2. Launch Armitage
+bash
+Copy
+Edit
+sudo armitage
+A GUI window will appear.
+
+Leave default settings:
+
+Host: 127.0.0.1
+
+Port: 55553
+
+User: msf
+
+Password: msf
+
+Click "Connect"
+
+If prompted to start Metasploit, click "Yes".
+
+✅ 3. Scan and Discover Targets
+Click “Hosts > Nmap Scan > Intense Scan” or use your own IP range.
+
+You can also manually add hosts via Hosts > Add Hosts.
+
+✅ 4. Exploit a Target
+Right-click on the discovered host.
+
+Select “Scan” to enumerate services.
+
+Right-click again > Attack > Browse available exploits.
+
+Choose an exploit > Click Launch.
+
+✅ 5. Gain a Shell
+If successful, the session opens in Metasploit Console at the bottom.
+
+Use Meterpreter commands for post-exploitation:
+
+bash
+Copy
+Edit
+sysinfo
+getuid
+webcam_snap
+hashdump
+✅ 6. Use Post-Exploitation Modules
+Right-click compromised host > Explore > ...
+
+Example: Privilege escalation, keyloggers, pivoting, etc.
+
+💡 Tips
+Always run Armitage as root or with sudo.
+
+Use VPN or test lab — never use against unauthorized systems.
+
+To stop:
+
+bash
+Copy
+Edit
+sudo systemctl stop postgresql
+🧠 Common Issues
+Problem	Fix
+Armitage won't connect	Make sure postgresql and msfdb are running
+No targets	Check your IP range and Nmap scan
+Exploit fails	Try different exploits or check for AV/firewall
