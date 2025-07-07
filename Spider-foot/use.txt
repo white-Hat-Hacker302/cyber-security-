@@ -1,0 +1,105 @@
+🔹 1. Install SpiderFoot
+SpiderFoot is often pre-installed in Kali. If not, install it manually:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install spiderfoot
+Or clone the latest version from GitHub:
+
+bash
+Copy
+Edit
+git clone https://github.com/smicallef/spiderfoot.git
+cd spiderfoot
+pip3 install -r requirements.txt
+🔹 2. Run SpiderFoot GUI (Web Interface)
+Start the web UI:
+
+bash
+Copy
+Edit
+python3 sf.py
+Now open your browser and go to:
+
+cpp
+Copy
+Edit
+http://127.0.0.1:5001
+🔹 3. Login to the Web UI
+Default login (usually no login required)
+
+If asked:
+
+Username: admin
+
+Password: admin or blank
+
+🔹 4. Start a New Scan
+Click “New Scan”
+
+Enter:
+
+Scan Name (any name)
+
+Target (domain, IP, etc.)
+
+Choose modules or select all
+
+Click Run Scan
+
+🔹 5. View Results
+Go to Scans > Your Scan
+
+Click to see:
+
+IPs
+
+Emails
+
+DNS info
+
+Leaked credentials
+
+WHOIS
+
+Open ports
+
+and more
+
+🔹 6. Exporting Scan Reports
+You can export reports in:
+
+HTML
+
+CSV
+
+JSON
+
+From the scan dashboard, click “Export”
+
+🔹 7. Use from Command Line (CLI Mode)
+Example scan on domain example.com:
+
+bash
+Copy
+Edit
+python3 sfcli.py -s example.com -o spiderfoot_results.html
+🔹 Common Use Cases
+Task	Module Used
+Subdomain Discovery	sfp_dns, sfp_spider
+WHOIS Lookup	sfp_whois
+Leaked Data Search	sfp_breach
+Social Media Info	sfp_social
+Open Ports/Services	sfp_shodan, sfp_fofa
+
+⚠️ Tips
+Make sure to use proper API keys (e.g., Shodan, HaveIBeenPwned, etc.) for full module functionality.
+
+Run with --help for CLI options:
+
+bash
+Copy
+Edit
+python3 sf.py --help
