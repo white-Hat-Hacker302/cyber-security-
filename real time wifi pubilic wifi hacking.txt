@@ -1,0 +1,5 @@
+nmcli device wifi hotspot ifname wlan0 ssid 5G password 123456789
+
+wireshark
+
+http
