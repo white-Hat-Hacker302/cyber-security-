@@ -1,0 +1,70 @@
+✅ Step-by-Step Guide to Use Netdiscover in Kali Linux
+🔧 1. Open Terminal in Kali Linux
+Start by opening a terminal window.
+
+📡 2. Check Your Network Interface
+bash
+Copy
+Edit
+ifconfig
+or
+
+bash
+Copy
+Edit
+ip a
+Example: You might see an interface like eth0, wlan0, or ens33.
+
+🔍 3. Run Netdiscover in Passive Mode
+This is useful if you want to monitor the network silently:
+
+bash
+Copy
+Edit
+sudo netdiscover -p
+🚀 4. Run Netdiscover in Active Mode (Full Scan)
+This actively scans a range of IPs to discover live hosts:
+
+bash
+Copy
+Edit
+sudo netdiscover
+By default, it will auto-detect the subnet and start scanning.
+
+🎯 5. Scan a Specific Range
+Example for scanning a specific IP range:
+
+bash
+Copy
+Edit
+sudo netdiscover -r 192.168.1.0/24
+Replace 192.168.1.0/24 with your network’s IP range.
+
+⚙️ 6. Common Options
+Command	Description
+-i eth0	Use a specific interface
+-r 192.168.1.0/24	Define IP range to scan
+-p	Passive mode
+-s 60	Set time in seconds to sleep between scans
+-n	Do not display the header
+
+📘 Example Use Case
+bash
+Copy
+Edit
+sudo netdiscover -i wlan0 -r 192.168.0.0/24
+This scans the 192.168.0.0/24 range using the wlan0 interface.
+
+📊 Output Example
+ruby
+Copy
+Edit
+IP              MAC Address       Interface    Manufacturer
+192.168.0.1     AA:BB:CC:DD:EE:FF wlan0        Cisco Systems
+192.168.0.10    11:22:33:44:55:66 wlan0        Dell Inc
+🧠 Pro Tips
+Use Netdiscover when you're connected to a WiFi or LAN.
+
+Best used in local networks, not for remote scanning.
+
+Works well for recon in CTFs or internal penetration tests.
