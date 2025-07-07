@@ -1,0 +1,75 @@
+ Step-by-Step: Using theHarvester in Kali Linux
+🔧 1. Open Terminal
+Launch a terminal in Kali Linux.
+
+📥 2. Install or Update theHarvester
+Kali usually comes with it pre-installed. But to be sure:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install theharvester
+▶️ 3. Basic Usage Command
+bash
+Copy
+Edit
+theharvester -d example.com -b google
+Explanation:
+
+-d → domain to search (target)
+
+-b → data source (e.g., google, bing, yahoo, linkedin, shodan)
+
+🔍 Example Commands
+🌐 Google Search for Emails and Hosts
+bash
+Copy
+Edit
+theharvester -d microsoft.com -b google
+🌐 Bing Search
+bash
+Copy
+Edit
+theharvester -d microsoft.com -b bing
+📡 Use All Sources (Best for Deep Recon)
+bash
+Copy
+Edit
+theharvester -d microsoft.com -b all
+💾 4. Save Results to a File
+bash
+Copy
+Edit
+theharvester -d microsoft.com -b google -f result_microsoft
+Saves an HTML and XML file (result_microsoft.xml and .html) in the current directory.
+
+🔧 5. List All Available Data Sources
+bash
+Copy
+Edit
+theharvester -h
+Look under -b section for supported sources like:
+
+google
+
+bing
+
+baidu
+
+linkedin
+
+shodan
+
+crtsh
+
+hunter
+
+github
+
+📌 Tips:
+Some APIs (like Shodan or Hunter.io) need API keys.
+
+Use -l to limit results and -s to start from a specific result number.
+
+Combine with other OSINT tools (like Recon-ng or Maltego) for deeper recon.
