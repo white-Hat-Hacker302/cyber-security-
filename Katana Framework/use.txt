@@ -1,0 +1,62 @@
+✅ How to Use Katana Framework in Kali Linux
+🔧 Step 1: Install Required Dependencies
+First, ensure your Kali system is updated and has the needed dependencies:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt upgrade -y
+sudo apt install git python3 python3-pip php curl
+📥 Step 2: Clone Katana Framework from GitHub
+bash
+Copy
+Edit
+git clone https://github.com/PowerScript/KatanaFramework.git
+cd KatanaFramework
+⚙️ Step 3: Install the Framework
+bash
+Copy
+Edit
+sudo python3 install
+After installation, you can launch it with:
+
+bash
+Copy
+Edit
+sudo katana
+🧪 Step 4: Using Katana Framework
+Once launched, you’ll see the Katana interactive shell:
+
+bash
+Copy
+Edit
+Katana > 
+Type help or ? to view available commands and modules:
+
+bash
+Copy
+Edit
+help
+📚 Common Commands
+Command	Description
+show modules	List all available modules
+use <module>	Load a module (e.g., use information-gathering/portscanner)
+set <option> <value>	Set module options
+run	Execute the loaded module
+back	Return to main menu
+exit	Exit Katana Framework
+
+🧰 Example: Run Port Scanner Module
+bash
+Copy
+Edit
+Katana > use information-gathering/portscanner
+Katana > set target 192.168.1.1
+Katana > run
+🔒 Important Tips
+Run as root or with sudo for full functionality.
+
+Make sure you use it ethically and with legal permission.
+
+Some modules may require additional tools or scripts.
+
