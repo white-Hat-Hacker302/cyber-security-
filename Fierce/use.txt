@@ -1,0 +1,64 @@
+✅ Step-by-Step: How to Use Fierce in Kali Linux
+🔹 Step 1: Open Your Terminal
+Press Ctrl + Alt + T or search "Terminal" in Kali's menu.
+
+🔹 Step 2: Check If Fierce is Installed
+bash
+Copy
+Edit
+fierce -h
+If it's installed, you'll see usage instructions. If not installed, run:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install fierce
+🔹 Step 3: Basic Syntax
+bash
+Copy
+Edit
+fierce -dns <domain>
+Example:
+
+bash
+Copy
+Edit
+fierce -dns example.com
+This will scan the domain example.com for subdomains, DNS records, and potentially hidden servers.
+
+⚙️ Common Fierce Options
+Option	Description
+-dns <domain>	Target domain to scan
+-file <filename>	Use your own wordlist of subdomains
+-threads <number>	Set number of threads (faster scan)
+-search <string>	Search domains that contain a specific keyword
+-dnsserver <IP>	Use a specific DNS server
+-delay <ms>	Delay in milliseconds between requests
+
+📌 Example: Custom Wordlist
+bash
+Copy
+Edit
+fierce -dns example.com -file custom_wordlist.txt
+🔍 Output
+Fierce will attempt:
+
+DNS enumeration
+
+Subdomain brute forcing
+
+Checking for misconfigured DNS
+
+IP address mapping
+
+📦 Location in Kali (optional)
+After install, the script is located at:
+
+bash
+Copy
+Edit
+/usr/bin/fierce
+🧠 Tip:
+Fierce is passive (mostly DNS queries) — it’s stealthy and won’t trigger alerts like port scanners. Combine it with theHarvester, dnsenum, or Sublist3r for full recon.
+
