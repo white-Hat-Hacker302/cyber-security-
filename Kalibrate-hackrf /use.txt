@@ -1,0 +1,108 @@
+📦 What is Kalibrate-HackRF?
+Kalibrate-HackRF is a tool that allows you to:
+
+Scan GSM base station frequencies.
+
+Detect nearby cell towers.
+
+Measure frequency offsets.
+
+It is specifically designed to work with HackRF SDR hardware.
+
+✅ Step-by-Step Guide to Use Kalibrate-HackRF in Kali Linux
+1. 🔧 Install Dependencies
+Open your terminal and install the required tools:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install git cmake libhackrf-dev build-essential
+2. 📥 Clone and Build Kalibrate-HackRF
+bash
+Copy
+Edit
+git clone https://github.com/scateu/kalibrate-hackrf.git
+cd kalibrate-hackrf
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+This installs kal binary in your system.
+
+🚀 3. Scan GSM Frequencies
+Run the following command to scan all standard GSM frequency bands:
+
+bash
+Copy
+Edit
+kal -s GSM900
+You can also scan other bands like:
+
+GSM850
+
+DCS1800
+
+PCS1900
+
+Example:
+
+bash
+Copy
+Edit
+kal -s DCS1800
+This will output nearby GSM towers and their frequencies.
+
+📡 4. Calibrate Frequency Offset
+To find the frequency offset of your HackRF:
+
+bash
+Copy
+Edit
+kal -s GSM900 -g 40
+Replace -g 40 with your preferred gain value (usually 30–50).
+
+The output will show:
+
+Channel
+
+Frequency
+
+Power
+
+Frequency offset
+
+📘 5. Example Full Command
+bash
+Copy
+Edit
+kal -s GSM900 -g 44
+Output example:
+
+yaml
+Copy
+Edit
+Found 1 possible base stations:
+chan:  50 (935.0MHz + 1.085kHz)    power: 154420
+🛠️ Troubleshooting
+🔌 HackRF not found?
+
+Run hackrf_info to test if it's connected.
+
+Use sudo if needed: sudo kal -s GSM900
+
+⚠️ Permission issues?
+Add your user to plugdev:
+
+bash
+Copy
+Edit
+sudo usermod -aG plugdev $USER
+reboot
+🧠 Tips
+Combine with Wireshark + OsmocomBB for GSM sniffing.
+
+Use external antenna for better signal reception.
+
+Use kal -h to view all command options.
