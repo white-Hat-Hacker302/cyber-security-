@@ -1,0 +1,102 @@
+🔧 What is NetSniff-ng?
+netsniff-ng is a fast, efficient command-line network analyzer and packet generator suite for Linux. It's useful for:
+
+Packet sniffing
+
+Traffic generation (flooding)
+
+Network performance testing
+
+Packet analysis
+
+Firewall/IDS testing
+
+It uses zero-copy mechanisms (memory-mapped packet sockets), making it extremely fast.
+
+✅ Installation (If not already installed)
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install netsniff-ng
+📊 Basic Syntax
+bash
+Copy
+Edit
+sudo netsniff-ng [options]
+⚡️ To Flood Traffic Using trafgen (part of netsniff-ng suite)
+Step 1: Create a Traffic Generation Config File
+Create a file called flood.conf:
+
+bash
+Copy
+Edit
+sudo nano flood.conf
+Paste the following basic packet generation example:
+
+c
+Copy
+Edit
+# Ethernet (Layer 2) flood packet
+{
+    eth(src=00:11:22:33:44:55, dst=ff:ff:ff:ff:ff:ff)
+    ipv4(src=192.168.1.10, dst=192.168.1.255, proto=udp)
+    udp(sport=12345, dport=80)
+    data(pattern="A", length=1400)
+}
+Save and exit.
+
+Step 2: Use trafgen to Start Flooding
+bash
+Copy
+Edit
+sudo trafgen -i eth0 -f flood.conf -n 0
+-i eth0 → Replace with your network interface (use ip a to check)
+
+-f flood.conf → Packet structure config
+
+-n 0 → Infinite loop (floods continuously)
+
+⚠️ Warning: This will flood the network. Use responsibly in a controlled/test environment only!
+
+🕵️‍♂️ Sniff Network Packets
+bash
+Copy
+Edit
+sudo netsniff-ng -i eth0 -o capture.pcap
+-i = Interface
+
+-o = Output file (can be opened in Wireshark)
+
+📁 Additional Tools in the Suite
+trafgen – High-speed traffic generator
+
+bpfc – Berkeley Packet Filter compiler
+
+ifpps – Interface packet/second counter
+
+mausezahn – Packet injection and DoS testing
+
+flowtop – Real-time traffic viewer like top
+
+📌 Example: Viewing Traffic in Real Time
+bash
+Copy
+Edit
+sudo ifpps -i eth0
+📍 Find Your Interface Name
+Use:
+
+bash
+Copy
+Edit
+ip link show
+Or:
+
+bash
+Copy
+Edit
+ifconfig
+❗️ Ethical Warning
+Using netsniff-ng to flood or attack real networks without permission is illegal. Only use these tools in your lab, virtual environment, or authorized testing setups.
+
