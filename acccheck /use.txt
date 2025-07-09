@@ -1,0 +1,66 @@
+🔧 Step-by-Step Guide to Use acccheck in Kali Linux
+✅ 1. Locate acccheck
+Ensure acccheck is available in your system:
+
+bash
+Copy
+Edit
+which acccheck
+If it's not installed by default, download it:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install acccheck
+Or manually clone it:
+
+bash
+Copy
+Edit
+git clone https://github.com/stealth/acccheck.git
+cd acccheck
+chmod +x acccheck.pl
+Run it with:
+
+bash
+Copy
+Edit
+perl acccheck.pl
+✅ 2. Basic Syntax
+bash
+Copy
+Edit
+perl acccheck.pl -t <target_ip> -u <username> -p <password>
+✅ 3. Example Usages
+🔹 Single username and password
+
+bash
+Copy
+Edit
+perl acccheck.pl -t 192.168.1.10 -u administrator -p password123
+🔹 Brute-force with password list
+
+bash
+Copy
+Edit
+perl acccheck.pl -t 192.168.1.10 -u administrator -P /usr/share/wordlists/rockyou.txt
+🔹 Brute-force with username list and password list
+
+bash
+Copy
+Edit
+perl acccheck.pl -t 192.168.1.10 -U users.txt -P passwords.txt
+✅ 4. Options Explained
+Option	Description
+-t	Target IP address
+-u	Single username
+-p	Single password
+-U	File with list of usernames
+-P	File with list of passwords
+-v	Verbose output
+-h	Help screen
+
+⚠️ Legal Warning
+Only use acccheck on networks and systems you own or have explicit permission to test. Unauthorized use is illegal.
+
