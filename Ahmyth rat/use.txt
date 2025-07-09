@@ -1,0 +1,89 @@
+
+⚠️ Warning:
+This guide is only for educational and authorized testing (like on your own devices or in a test lab). Unauthorized access to devices is illegal.
+
+🧰 What is AhMyth RAT?
+AhMyth is a powerful open-source Remote Access Trojan (RAT) for Android devices. It allows control over a target Android device once the payload is installed.
+
+🔧 Step-by-Step Guide to Use AhMyth in Kali Linux:
+📦 Step 1: Install Dependencies
+Make sure you have Java, Node.js, and Electron installed.
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install git nodejs npm openjdk-17-jdk -y
+💾 Step 2: Download AhMyth from GitHub
+bash
+Copy
+Edit
+git clone https://github.com/AhMyth/AhMyth-Android-RAT.git
+cd AhMyth-Android-RAT
+⚙️ Step 3: Install AhMyth Dependencies
+bash
+Copy
+Edit
+npm install
+Then build it using Electron:
+
+bash
+Copy
+Edit
+npm start
+This will launch the AhMyth GUI.
+
+🧪 Step 4: Create an APK Payload
+In the GUI:
+
+Click on "Build".
+
+Enter your:
+
+IP address (your Kali Linux machine IP)
+
+Port (e.g., 4444)
+
+Click on "Generate" to create the malicious APK file.
+
+This will generate an infected APK (e.g., evil.apk).
+
+📱 Step 5: Deliver the APK to Target
+Important: This step is where consent and legality matter. You must have permission to test.
+
+Send the evil.apk to a test Android device (via email, USB, or file sharing).
+
+Ensure the target device has "Install from Unknown Sources" enabled.
+
+🌐 Step 6: Listen for Connection
+Back in AhMyth GUI:
+
+Go to "My Victims"
+
+Wait for the target device to open the APK and install it.
+
+If successful, you’ll see the device listed.
+
+📋 Step 7: Control the Device (Educational Use Only)
+You can now:
+
+Access SMS
+
+Browse files
+
+Use mic and camera
+
+Get GPS location
+
+Etc.
+
+🔐 Security Tip (for defenders):
+If you're defending Android devices, this tool highlights how important it is to:
+
+Avoid installing unknown APKs
+
+Keep device OS updated
+
+Use a strong mobile antivirus
+
+Monitor permissions carefully
