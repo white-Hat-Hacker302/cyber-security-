@@ -1,0 +1,77 @@
+✅ Step-by-Step Guide to Use WhatWeb in Kali Linux:
+🔧 1. Check if WhatWeb is Installed
+WhatWeb comes pre-installed in most versions of Kali Linux. To verify:
+
+bash
+Copy
+Edit
+whatweb --help
+If not installed:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install whatweb
+🚀 2. Basic Usage
+To scan a website:
+
+bash
+Copy
+Edit
+whatweb example.com
+🔎 Example:
+
+bash
+Copy
+Edit
+whatweb https://www.google.com
+⚙️ 3. Verbose Output (More Details)
+bash
+Copy
+Edit
+whatweb -v example.com
+🔄 4. Scan Multiple Websites
+Put URLs in a file (sites.txt) and run:
+
+bash
+Copy
+Edit
+whatweb -i sites.txt
+🛠️ 5. Aggressive Mode (Deeper Fingerprinting)
+bash
+Copy
+Edit
+whatweb -a 3 example.com
+Aggression levels range from 0 (least aggressive) to 3 (most aggressive).
+
+🌐 6. Proxy Support
+Send scan through a proxy (e.g., Tor):
+
+bash
+Copy
+Edit
+whatweb --proxy http://127.0.0.1:9050 example.com
+📄 7. Output to File
+bash
+Copy
+Edit
+whatweb -a 3 -v -o report.txt example.com
+📌 Example Command Summary:
+bash
+Copy
+Edit
+whatweb -a 3 -v --color=never example.com
+🎯 What It Detects:
+CMS (WordPress, Joomla, Drupal)
+
+Server (Apache, Nginx, IIS)
+
+Scripts (jQuery, AngularJS)
+
+Analytics (Google Analytics, Matomo)
+
+Hosting services (Cloudflare, Amazon)
+
+⚠️ Note:
+Use WhatWeb only on sites you own or have permission to test. Unauthorized scanning may be illegal and flagged as malicious activity.
