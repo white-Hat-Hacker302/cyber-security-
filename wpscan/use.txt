@@ -1,0 +1,71 @@
+🔧 Step 1: Update WPScan
+Always update the vulnerability database before scanning.
+
+bash
+Copy
+Edit
+wpscan --update
+🧪 Step 2: Basic Scan
+Scan a target WordPress site:
+
+bash
+Copy
+Edit
+wpscan --url https://example.com
+Replace https://example.com with your target WordPress site.
+
+🔐 Step 3: Enumerate Users
+Useful for brute force or further recon.
+
+bash
+Copy
+Edit
+wpscan --url https://example.com --enumerate u
+u = users
+
+You can also use vp for vulnerable plugins, vt for vulnerable themes, ap for all plugins, etc.
+
+🔓 Step 4: Brute Force Login (if authorized)
+You need a wordlist file like rockyou.txt.
+
+bash
+Copy
+Edit
+wpscan --url https://example.com \
+--passwords /usr/share/wordlists/rockyou.txt \
+--usernames admin
+⚠️ Use only with permission! Unauthorized brute-force attacks are illegal.
+
+🛠️ Step 5: Plugin Enumeration
+Check for vulnerable plugins:
+
+bash
+Copy
+Edit
+wpscan --url https://example.com --enumerate vp
+🔍 More Enumeration Options
+bash
+Copy
+Edit
+--enumerate vp      # Vulnerable plugins
+--enumerate ap      # All plugins
+--enumerate vt      # Vulnerable themes
+--enumerate at      # All themes
+--enumerate cb      # Config backups
+--enumerate dbe     # DB exports
+🧰 Step 6: Help Menu
+For more options:
+
+bash
+Copy
+Edit
+wpscan --help
+✅ Example Full Command
+bash
+Copy
+Edit
+wpscan --url https://example.com --enumerate u,vp,vt --api-token YOUR_API_TOKEN
+🔑 WPScan API token is required for full vulnerability data. Get free token here: https://wpscan.com/register
+
+⚠️ Legal Notice
+Only scan your own websites or ones you have explicit permission to test. Unauthorized scanning is illegal.
