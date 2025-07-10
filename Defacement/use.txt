@@ -1,0 +1,96 @@
+🔍 What Is a Defacement Attack?
+A defacement attack typically involves:
+
+Gaining unauthorized access to a web server
+
+Replacing the index page (usually index.html, index.php)
+
+Leaving behind a hacker's message or image ("deface page")
+
+🧰 Kali Linux Tools & Techniques for Defacement (Educational Purposes)
+⚙️ Step 1: Reconnaissance
+Tools Used:
+
+Nmap – Scan open ports
+
+WhatWeb, Wappalyzer – Detect CMS (WordPress, Joomla, etc.)
+
+theHarvester – Collect emails/domains for phishing prep
+
+bash
+Copy
+Edit
+nmap -sV target.com
+whatweb target.com
+🛠️ Step 2: Vulnerability Scanning
+Tools Used:
+
+Nikto – Scan for known web vulnerabilities
+
+WPScan – Scan WordPress vulnerabilities
+
+Dirb, Gobuster – Discover hidden admin panels
+
+bash
+Copy
+Edit
+nikto -h http://target.com
+wpscan --url http://target.com --enumerate u
+🚪 Step 3: Gaining Access
+Methods:
+
+SQL Injection (if database is vulnerable)
+
+Remote File Upload vulnerability
+
+Exploiting outdated CMS/plugins
+
+Bruteforcing login portals (admin panel)
+
+Tools Used:
+
+sqlmap
+
+Burp Suite
+
+Hydra
+
+bash
+Copy
+Edit
+sqlmap -u "http://target.com/index.php?id=1" --dbs
+hydra -l admin -P rockyou.txt target.com http-post-form "/admin:username=^USER^&password=^PASS^:F=incorrect"
+🧬 Step 4: Web Shell Upload
+Once a file upload vulnerability is found, upload a PHP web shell (like c99, b374k, or r57).
+
+Steps:
+
+Rename shell to shell.php.jpg or use MIME spoofing
+
+Upload via vulnerable file form
+
+Access it: http://target.com/uploads/shell.php
+
+🧾 Step 5: Defacement
+Navigate through the shell, find the root directory (like /var/www/html), and replace:
+
+bash
+Copy
+Edit
+mv index.html index_backup.html
+echo "<h1>Hacked By XYZ</h1>" > index.html
+Or use the web shell’s file manager.
+
+🛡️ How to Prevent Defacement (For Admins)
+Keep all software (CMS, plugins) updated
+
+Use strong admin passwords & 2FA
+
+Disable file uploads or validate them
+
+Monitor logs (e.g., /var/log/apache2/access.log)
+
+Use WAFs (Web Application Firewalls)
+
+⚠️ Disclaimer
+This guide is for educational and ethical hacking purposes only. Unauthorized access to systems or websites is illegal and punishable by law.
