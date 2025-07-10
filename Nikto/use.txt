@@ -1,0 +1,95 @@
+ Step 1: Install Nikto (if not already installed)
+Nikto is pre-installed in most Kali Linux versions. To confirm:
+
+bash
+Copy
+Edit
+which nikto
+If it's not installed, install it:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install nikto
+🚀 Step 2: Basic Nikto Syntax
+bash
+Copy
+Edit
+nikto -h [target website or IP]
+Example:
+
+bash
+Copy
+Edit
+nikto -h http://testphp.vulnweb.com
+📋 Step 3: Common Usage Examples
+✅ Basic Web Server Scan
+bash
+Copy
+Edit
+nikto -h http://192.168.1.10
+✅ Scan with SSL (HTTPS)
+bash
+Copy
+Edit
+nikto -h https://example.com
+✅ Scan Specific Port
+bash
+Copy
+Edit
+nikto -h http://example.com -p 8080
+✅ Save Output to File
+bash
+Copy
+Edit
+nikto -h http://example.com -o result.txt
+✅ Scan a List of Targets
+Create a file like targets.txt with each URL/IP on a new line:
+
+bash
+Copy
+Edit
+nikto -h targets.txt
+🔐 Step 4: Useful Options
+Option	Description
+-h	Target host or file with targets
+-p	Specify port number
+-ssl	Force SSL connection
+-o	Output to file
+-Format	Output format: txt, csv, html, etc.
+-Tuning	Choose test types (e.g., XSS, misconfig, etc)
+
+Example with tuning only for XSS and misconfiguration:
+
+bash
+Copy
+Edit
+nikto -h http://example.com -Tuning x6
+🧪 Step 5: Advanced Features
+Proxy your request through Burp Suite:
+bash
+Copy
+Edit
+nikto -h http://example.com -useproxy http://127.0.0.1:8080
+Set User-Agent:
+bash
+Copy
+Edit
+nikto -h http://example.com -useragent "Mozilla/5.0 Hacker"
+📊 Step 6: Analyze the Results
+Nikto will report:
+
+Outdated software versions
+
+Dangerous files/folders (like /phpinfo.php)
+
+Misconfigurations (e.g., directory listing enabled)
+
+XSS, SQLi signs (in basic level)
+
+Security headers missing
+
+💡 Tip:
+Nikto is noisy and easily detectable, so it’s best for internal or authorized testing only. It's not stealthy like Nmap or Burp.
+
