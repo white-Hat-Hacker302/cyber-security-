@@ -1,0 +1,80 @@
+🔧 Installation (if not already installed):
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install tcpdump
+✅ Basic Syntax:
+bash
+Copy
+Edit
+sudo tcpdump [options] [expression]
+⚙️ Basic Tcpdump Usage Examples:
+1. List all available network interfaces
+bash
+Copy
+Edit
+sudo tcpdump -D
+2. Capture packets on a specific interface
+bash
+Copy
+Edit
+sudo tcpdump -i eth0
+Replace eth0 with your actual interface (e.g., wlan0, ens33, etc.)
+
+3. Capture only 10 packets
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 -c 10
+4. Save captured packets to a file (for Wireshark analysis)
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 -w capture.pcap
+5. Read packets from a capture file
+bash
+Copy
+Edit
+sudo tcpdump -r capture.pcap
+6. Capture only TCP traffic
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 tcp
+7. Filter packets by IP address
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 host 192.168.1.1
+8. Filter packets by port
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 port 80
+9. Capture traffic from a specific source IP
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 src 192.168.1.100
+10. Verbose output for analysis
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 -vvv
+🧠 Tips:
+Use Ctrl + C to stop the capture.
+
+Combine filters, like:
+
+bash
+Copy
+Edit
+sudo tcpdump -i eth0 src 192.168.1.10 and dst port 443
+📚 Advanced Filters:
+Only capture HTTP GET requests:
+
+bash
+Copy
+Edit
+sudo tcpdump -A -i eth0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]>>4)<<2)) != 0)'
