@@ -1,0 +1,81 @@
+✅ Step 1: Install Dependencies
+Make sure you have Python 3 and git installed.
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install python3 git
+✅ Step 2: Clone the Photon Repository
+bash
+Copy
+Edit
+git clone https://github.com/s0md3v/Photon.git
+cd Photon
+✅ Step 3: Install Required Python Modules
+bash
+Copy
+Edit
+pip3 install -r requirements.txt
+✅ Step 4: Basic Usage of Photon
+bash
+Copy
+Edit
+python3 photon.py -u https://example.com -o output
+-u: Target URL (e.g., https://example.com)
+
+-o: Output folder where data will be saved
+
+✅ Common Useful Options
+Option	Description
+-u <url>	Target URL
+-o <dir>	Output directory
+-l <level>	Crawling level (depth)
+--dns	Perform DNS enumeration
+--keys	Extract sensitive keys (API, etc.)
+--clone	Clone the website locally
+--ninja	Randomize headers to avoid WAF detection
+--exclude <regex>	Skip URLs matching regex
+
+🔍 Example Commands
+1. Simple Crawl
+bash
+Copy
+Edit
+python3 photon.py -u https://testphp.vulnweb.com -o results
+2. Crawl with DNS & API Key Extraction
+bash
+Copy
+Edit
+python3 photon.py -u https://targetsite.com -o output --dns --keys
+3. Clone a Site Locally
+bash
+Copy
+Edit
+python3 photon.py -u https://targetsite.com --clone
+4. Bypass WAF and Firewalls (Stealth Mode)
+bash
+Copy
+Edit
+python3 photon.py -u https://target.com -o output --ninja
+📁 Output
+The tool will create a directory (e.g., output) with:
+
+emails.txt
+
+files.txt
+
+intel.txt
+
+robots.txt
+
+urls.txt
+
+wayback.txt
+
+⚠️ Notes
+Use only on authorized targets.
+
+It’s ideal for passive and semi-passive reconnaissance.
+
+Photon is great before launching further scans with tools like nmap, whatweb, or nikto.
