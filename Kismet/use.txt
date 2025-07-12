@@ -1,0 +1,103 @@
+🔧 Step 1: Install Kismet (if not installed)
+Kismet comes pre-installed in Kali, but if it’s missing:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install kismet
+📶 Step 2: Put Wireless Adapter in Monitor Mode
+First, find your wireless adapter name:
+
+bash
+Copy
+Edit
+iwconfig
+Then enable monitor mode (replace wlan0 with your interface):
+
+bash
+Copy
+Edit
+sudo ip link set wlan0 down
+sudo iw dev wlan0 set type monitor
+sudo ip link set wlan0 up
+Or use:
+
+bash
+Copy
+Edit
+sudo airmon-ng start wlan0
+▶️ Step 3: Launch Kismet
+Start Kismet from terminal:
+
+bash
+Copy
+Edit
+sudo kismet
+On first run, it may ask for setup. Kismet runs a web interface, usually at:
+📍 http://localhost:2501
+
+🧩 Step 4: Configure Kismet Interface
+Once it opens in your browser:
+
+Go to Data Sources
+
+Click Add Source
+
+Enter interface name (e.g. wlan0mon)
+
+Choose source type (Wi-Fi)
+
+Click Add
+
+🔍 Step 5: Start Scanning
+Kismet will begin scanning all wireless networks:
+
+View SSIDs (network names)
+
+See hidden networks
+
+Track clients connected to APs
+
+Detect signal strength, encryption (WEP/WPA/WPA2)
+
+💾 Step 6: Save or Analyze Logs
+Kismet logs can be saved and viewed later:
+
+bash
+Copy
+Edit
+cd ~/kismet_logs/
+You’ll find:
+
+.pcapng files (for Wireshark)
+
+.netxml (network metadata)
+
+.kismet (Kismet sessions)
+
+💡 Useful Features in Kismet
+✅ Captures hidden SSIDs
+
+📡 Detects rogue access points
+
+🔍 Tracks Wi-Fi clients and their movement
+
+🧠 Passive sniffing (no packet injection needed)
+
+🎯 GPS logging (when used with GPS device)
+
+🛑 Stop Monitor Mode
+After you're done:
+
+bash
+Copy
+Edit
+sudo airmon-ng stop wlan0mon
+🧠 Tips
+Kismet is passive, so it won’t generate traffic = stealthy.
+
+Best used with external USB Wi-Fi adapters that support monitor mode (e.g., Alfa AWUS036ACH).
+
+For Bluetooth or SDR support, install corresponding plugins.
+
