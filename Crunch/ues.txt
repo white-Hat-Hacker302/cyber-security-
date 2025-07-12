@@ -1,0 +1,79 @@
+🔧 Step-by-Step: How to Use Crunch in Kali Linux
+✅ 1. Check if Crunch is Installed
+Crunch comes pre-installed in Kali Linux. To verify:
+
+bash
+Copy
+Edit
+crunch
+If installed, you'll see usage info. If not:
+
+bash
+Copy
+Edit
+sudo apt install crunch
+📚 Crunch Basic Syntax
+bash
+Copy
+Edit
+crunch <min> <max> [options]
+<min>: Minimum length of the password
+
+<max>: Maximum length of the password
+
+📌 Examples
+📍 1. Basic Usage
+Generate passwords of length 4 using only lowercase letters:
+
+bash
+Copy
+Edit
+crunch 4 4 abcdefghijklmnopqrstuvwxyz
+📍 2. Save Output to File
+bash
+Copy
+Edit
+crunch 6 6 abc123 -o wordlist.txt
+📍 3. Use Built-in Character Sets
+bash
+Copy
+Edit
+crunch 4 6 -f /usr/share/crunch/charset.lst mixalpha-numeric
+Available sets include:
+
+lower
+
+upper
+
+numeric
+
+mixalpha
+
+mixalpha-numeric
+
+all
+
+📍 4. Generate Using a Pattern
+Use @ for lowercase, , for uppercase, % for numbers, ^ for symbols:
+
+bash
+Copy
+Edit
+crunch 8 8 -t @@%%@@^^
+Example pattern: two lowercase, two digits, two lowercase, two symbols.
+
+📍 5. Specify Start and Stop Strings
+bash
+Copy
+Edit
+crunch 4 4 -s abcd -e abzz
+This will generate from "abcd" to "abzz".
+
+⚠️ Notes
+Crunch generates HUGE files. Be careful with the output size.
+
+It's CPU and disk-intensive. Don’t generate unnecessarily long lists.
+
+📁 Save Location Tip
+Always use -o /path/to/file.txt to store output and avoid cluttering terminal.
+
