@@ -1,0 +1,59 @@
+✅ What Wash Does
+Detects WPS-enabled networks.
+
+Shows BSSID, Channel, Signal strength, and WPS Lock status.
+
+Helps identify targets for WPS PIN attacks (via Reaver or Bully).
+
+🔧 Step-by-Step: Using wash in Kali Linux
+Step 1: Put Wi-Fi Adapter into Monitor Mode
+bash
+Copy
+Edit
+airmon-ng start wlan0
+Replace wlan0 with your adapter’s name (use iwconfig to check).
+
+This will create a new interface, usually wlan0mon.
+
+Step 2: Start Wash
+bash
+Copy
+Edit
+wash -i wlan0mon
+-i specifies the interface.
+
+You’ll see nearby WPS-enabled routers listed.
+
+Optional Flags:
+bash
+Copy
+Edit
+wash -i wlan0mon -c 6         # Scan only on channel 6
+wash -i wlan0mon -s           # Use short output (less detail)
+wash -i wlan0mon -g           # Include graph-style signal
+Step 3: Identify a Target
+Look for targets with WPS Locked: No.
+
+Note down the BSSID and channel for use in Reaver.
+
+Step 4: Stop Monitor Mode (Optional)
+bash
+Copy
+Edit
+airmon-ng stop wlan0mon
+⚠️ Tips:
+If no APs show, try:
+
+bash
+Copy
+Edit
+rfkill unblock all
+ifconfig wlan0mon up
+Make sure your Wi-Fi adapter supports monitor mode and packet injection.
+
+📌 Example Use with Reaver (after Wash)
+bash
+Copy
+Edit
+reaver -i wlan0mon -b [BSSID] -c [channel] -vv
+Let me know if you want a full WPS attack demo using Wash + Reaver.
