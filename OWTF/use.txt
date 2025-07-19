@@ -1,0 +1,94 @@
+ Step-by-Step: How to Use OWTF in Kali Linux
+✅ 1. Update Kali & Install OWTF (if not already installed)
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install owtf
+Or install from GitHub:
+
+bash
+Copy
+Edit
+git clone https://github.com/owtf/owtf.git
+cd owtf
+sudo ./install/install.sh
+✅ 2. Start OWTF
+bash
+Copy
+Edit
+owtf
+It will automatically open in your browser:
+
+cpp
+Copy
+Edit
+http://127.0.0.1:8009/
+If it doesn't open, you can manually access that URL.
+
+✅ 3. Use OWTF Web Interface
+Once OWTF loads in the browser:
+
+Click "Start Assessment"
+
+Enter Target URL (e.g. http://testphp.vulnweb.com)
+
+Choose plugins to run:
+
+Active
+
+Passive
+
+Semi-passive
+
+✅ 4. Run Scans
+Use the passive scan first to avoid alerting the target.
+
+Then use active plugins for deeper inspection like:
+
+SQL Injection testing
+
+XSS testing
+
+Directory brute-forcing
+
+SSL scans
+
+Spidering
+
+✅ 5. Analyze the Results
+Go to the Report Section
+
+Review vulnerabilities and plugin results
+
+Export reports in HTML or JSON
+
+⚙️ Common OWTF Command-Line Usage
+Start OWTF with a target:
+
+bash
+Copy
+Edit
+owtf -t web -o output_directory http://example.com
+List available plugins:
+
+bash
+Copy
+Edit
+owtf --list
+Run specific plugin:
+
+bash
+Copy
+Edit
+owtf --run OWASP-IG-001 http://example.com
+💡 Tips
+Combine OWTF with Burp Suite or ZAP for more detailed analysis.
+
+Use Tor or VPN to anonymize traffic.
+
+Don’t attack live sites without permission.
+
+📚 Documentation
+For official documentation:
+🔗 https://owtf.org or GitHub: https://github.com/owtf/owtf
