@@ -1,0 +1,64 @@
+✅ Step 1: Install multimon-ng (if not installed)
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install multimon-ng
+✅ Step 2: Connect SDR device (like RTL-SDR)
+Insert your RTL-SDR dongle into a USB port.
+
+Test the RTL-SDR:
+
+bash
+Copy
+Edit
+rtl_test
+If it's working, you'll see data like sample rates and tuner output.
+
+✅ Step 3: Start receiving radio audio using rtl_fm
+You can pipe radio signals from rtl_fm into multimon-ng.
+
+Example (for POCSAG at 433.92 MHz):
+
+bash
+Copy
+Edit
+rtl_fm -f 433920000 -s 22050 -g 50 - | multimon-ng -t raw -a POCSAG1200 -a POCSAG2400 -a POCSAG512 -
+-f 433920000 = Frequency in Hz
+
+-s 22050 = Sample rate (should match multimon-ng)
+
+-g 50 = Gain
+
+-a = Decoder type (POCSAG1200, etc.)
+
+✅ Step 4: Decode Audio Files (Optional)
+You can also decode recorded .wav files:
+
+bash
+Copy
+Edit
+multimon-ng -a POCSAG1200 -t wav youraudio.wav
+✅ Step 5: Supported Protocols
+You can list all supported protocols with:
+
+bash
+Copy
+Edit
+multimon-ng --help
+Some supported protocols:
+
+POCSAG1200 / 2400 / 512
+
+DTMF
+
+AFSK1200
+
+FLEX
+
+HAPN4800
+
+✅ Tips:
+Use audacity or similar tools to clean and amplify audio before decoding.
+
+Ensure mono audio and correct sample rate (typically 22050 Hz).
