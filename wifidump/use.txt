@@ -1,0 +1,79 @@
+ Step-by-Step Guide to Use WiFiDump in Kali Linux
+⚠️ Root permission required
+⚠️ Use only on networks you own or have permission to test. Unauthorized use is illegal.
+
+🛠️ Step 1: Enable Monitor Mode
+First, identify your wireless interface:
+
+bash
+Copy
+Edit
+iwconfig
+Put your Wi-Fi adapter into monitor mode:
+
+bash
+Copy
+Edit
+airmon-ng start wlan0
+This will change wlan0 to wlan0mon.
+
+🛠️ Step 2: Install WiFiDump (if not installed)
+If WiFiDump is not already included:
+
+bash
+Copy
+Edit
+sudo git clone https://github.com/derv82/wifidump.git
+cd wifidump
+chmod +x wifidump.py
+Or install using pip (if available as Python package):
+
+bash
+Copy
+Edit
+pip install wifidump
+🛠️ Step 3: Run WiFiDump
+Basic usage:
+
+bash
+Copy
+Edit
+sudo python wifidump.py -i wlan0mon
+This will start sniffing packets on monitor interface.
+
+🧰 Optional Flags (if supported by your version):
+-i — Interface name (e.g., wlan0mon)
+
+-c — Channel to sniff
+
+-o — Output file to save captured data
+
+Example:
+
+bash
+Copy
+Edit
+sudo python wifidump.py -i wlan0mon -c 6 -o output.cap
+📂 Step 4: Analyze Captured Packets
+Captured .cap files can be opened with:
+
+bash
+Copy
+Edit
+wireshark output.cap
+Or use aircrack-ng, tshark, etc., to analyze the packets further.
+
+🔚 Step 5: Stop Monitor Mode
+Once done, disable monitor mode:
+
+bash
+Copy
+Edit
+airmon-ng stop wlan0mon
+💡 Tips:
+Use near the target Wi-Fi to ensure signal strength.
+
+Try changing channels to capture other traffic.
+
+Combine with tools like aircrack-ng, Wireshark, or tshark for deeper analysis.
+
