@@ -1,0 +1,108 @@
+🔧 Step-by-Step Guide to Use Fsociety in Kali Linux
+✅ 1. Install Fsociety
+If not already installed, open a terminal and run:
+
+bash
+Copy
+Edit
+git clone https://github.com/Manisso/fsociety
+cd fsociety
+chmod +x install.sh
+sudo ./install.sh
+This installs fsociety and makes it executable globally.
+
+✅ 2. Run Fsociety
+After installation, you can start the tool by typing:
+
+bash
+Copy
+Edit
+fsociety
+Or, if you're still in the fsociety directory:
+
+bash
+Copy
+Edit
+python3 fsociety.py
+You’ll see a menu like:
+
+csharp
+Copy
+Edit
+-------------------------------
+|  Fsociety Hacking Tools     |
+-------------------------------
+[1] Information Gathering
+[2] Password Attacks
+[3] Wireless Testing
+[4] Exploitation Tools
+[5] Sniffing & Spoofing
+[6] Web Hacking
+[7] Private Web Tools
+[8] Post Exploitation
+[9] Contributors
+[10] Update
+[99] Exit
+🧰 Categories and How to Use Them
+🔍 1. Information Gathering
+Tools: Nmap, Whois, DNSenum, TheHarvester
+Use: Scan networks, collect domain or email info
+
+💣 2. Password Attacks
+Tools: Hydra, Cupp
+Use: Brute-force SSH, FTP, or create wordlists
+
+📶 3. Wireless Testing
+Tools: Aircrack-ng, Reaver
+Use: Crack Wi-Fi passwords (requires external wireless adapter)
+
+🎯 4. Exploitation Tools
+Tools: Metasploit, Sqlmap
+Use: Exploit known vulnerabilities or SQL injection
+
+🎭 5. Sniffing & Spoofing
+Tools: Wireshark, Ettercap
+Use: Intercept traffic or run MITM attacks
+
+🌐 6. Web Hacking
+Tools: XSSer, WordpressScan
+Use: Find XSS, vulnerable WordPress sites
+
+🔐 7. Private Web Tools
+Tools: (Custom or third-party web exploits)
+Use: Target-specific custom scripts
+
+🛠 Example: SQL Injection Using SQLMap in Fsociety
+Launch fsociety:
+
+bash
+Copy
+Edit
+fsociety
+Select:
+
+csharp
+Copy
+Edit
+[4] Exploitation Tools
+[2] SQLMAP
+It opens the SQLMAP interface, then you can provide a target URL:
+
+bash
+Copy
+Edit
+sqlmap -u "http://example.com/index.php?id=1" --dbs
+🔁 Update Fsociety
+To update tools in the suite:
+
+bash
+Copy
+Edit
+fsociety
+> [10] Update
+⚠️ Note:
+Many tools require root privileges.
+
+Use responsibly and only on systems you have permission to test.
+
+Some tools require internet access and others may need extra setup (e.g., database for Metasploit).
