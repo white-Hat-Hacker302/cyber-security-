@@ -1,0 +1,98 @@
+🔧 Step 1: Install a Compatible Browser
+HackBar works best as an extension in Firefox or Google Chrome/Chromium.
+
+🔹 Option 1: Install Firefox (if not already installed)
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install firefox-esr -y
+🔹 Option 2: Install Chromium
+bash
+Copy
+Edit
+sudo apt install chromium -y
+🌐 Step 2: Install HackBar Extension
+🔸 For Firefox:
+Open Firefox.
+
+Go to this URL:
+https://addons.mozilla.org/en-US/firefox/addon/hackbar/
+
+Click “Add to Firefox” → then Add and Enable.
+
+🔸 For Chrome/Chromium:
+Open Chrome.
+
+Visit:
+https://chrome.google.com/webstore/detail/hackbar/fhhdlnnepfjhlhilgmeepgkhjmhhhjkh
+
+Click “Add to Chrome” → then Add Extension.
+
+🧪 Step 3: How to Use HackBar
+✅ Basic Usage:
+Open a website you want to test (target must be authorized).
+
+Click the HackBar icon in the browser toolbar.
+
+Select one of the following testing options:
+
+SQL Injection
+
+XSS (Cross Site Scripting)
+
+Base64 Encode/Decode
+
+URL Encode/Decode
+
+Post/Get/Referer switching
+
+✅ Example: SQL Injection Testing
+Visit a vulnerable URL, like:
+
+bash
+Copy
+Edit
+http://testphp.vulnweb.com/listproducts.php?cat=1
+Click HackBar → Paste the URL into HackBar.
+
+Modify it like:
+
+bash
+Copy
+Edit
+http://testphp.vulnweb.com/listproducts.php?cat=1' OR 1=1--
+Click Execute and observe the result.
+
+✅ Example: XSS Testing
+Find a parameter in a URL.
+
+Insert payload like:
+
+html
+Copy
+Edit
+<script>alert('XSS')</script>
+Use HackBar to encode or send the payload in GET or POST requests.
+
+🧰 Key Features in HackBar:
+✅ Encoding: URL, Base64, MD5, etc.
+
+✅ Auto SQL injection helpers.
+
+✅ JavaScript injection helpers.
+
+✅ Response viewing.
+
+✅ Manual fuzzing.
+
+🔐 ⚠️ Legal Warning:
+Only use HackBar on your own websites or systems, or systems you have explicit permission to test. Unauthorized access is illegal and unethical.
+
+If you want alternatives for local Linux-based tools for SQLi and XSS, consider:
+
+SQLMap (for SQL injection automation)
+
+XSStrike (for XSS testing)
+
+Burp Suite (manual testing and fuzzing)
