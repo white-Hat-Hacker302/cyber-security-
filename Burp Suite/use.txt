@@ -1,0 +1,95 @@
+ Step 1: Launch Burp Suite
+Open Terminal in Kali Linux.
+
+Type the following to launch Burp Suite:
+
+bash
+Copy
+Edit
+burpsuite
+Or use the GUI:
+
+Go to Applications → Web Application Analysis → Burp Suite.
+
+⚙️ Step 2: Initial Setup
+Choose "Temporary Project" → Click Next.
+
+Select "Use Burp Defaults" → Click Start Burp.
+
+The main Burp Suite dashboard will open.
+
+🌐 Step 3: Configure Browser to Use Burp Proxy
+Burp Suite uses localhost:8080 as a proxy by default.
+
+Option 1: Firefox (preferred for testing)
+Open Firefox.
+
+Go to:
+
+Preferences → Settings → Network Settings → Click "Manual proxy configuration".
+
+Set:
+
+HTTP Proxy: 127.0.0.1
+
+Port: 8080
+
+Check: "Use this proxy for all protocols"
+
+Save and close.
+
+🔐 Step 4: Install Burp Certificate (for HTTPS)
+In Firefox, visit:
+
+arduino
+Copy
+Edit
+http://burpsuite
+Click: CA Certificate → Save the .cer file.
+
+Go to Firefox Settings:
+
+Privacy & Security → Certificates → View Certificates → Authorities → Import
+
+Select the .cer file and trust it.
+
+🔍 Step 5: Intercept Requests
+In Burp Suite, go to the Proxy tab → Intercept → Make sure it’s ON.
+
+Visit any site from Firefox. The request will appear in Burp.
+
+You can:
+
+View/edit the request
+
+Forward it
+
+Drop it
+
+🔄 Step 6: Use Other Burp Tools
+Tool	Purpose
+Target	View and map the site structure
+Spider	Crawl the web app automatically
+Scanner (Pro only)	Automatically find vulnerabilities
+Intruder	Brute-force or fuzz input fields
+Repeater	Manually modify and resend requests
+Decoder	Encode/decode data (e.g., Base64)
+Comparer	Compare two HTTP messages
+Extender	Add Burp extensions (BApp Store)
+
+✅ Example: Using Repeater
+Right-click on any request in Proxy tab → Click Send to Repeater.
+
+Go to the Repeater tab.
+
+Modify the request as needed and click Send.
+
+Analyze the response.
+
+💡 Tips
+Always turn off Intercept after analyzing, or browsing will be blocked.
+
+Use Scope settings to limit what Burp listens to.
+
+Combine Burp with other Kali tools (like Nmap, Dirb, etc.) for complete assessments.
+
