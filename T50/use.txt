@@ -1,0 +1,71 @@
+🔧 Step-by-Step: How to Use T50 in Kali Linux
+✅ Step 1: Install T50 (if not already installed)
+T50 is sometimes not pre-installed in Kali. Install it using:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install t50
+✅ Step 2: Check Available Options
+To see all available options and supported protocols:
+
+bash
+Copy
+Edit
+t50 --help
+✅ Step 3: Basic Usage Syntax
+bash
+Copy
+Edit
+sudo t50 [target IP] --[protocol]
+🚀 Common Examples
+1. Send TCP flood
+bash
+Copy
+Edit
+sudo t50 192.168.1.100 --tcp
+2. Send UDP flood
+bash
+Copy
+Edit
+sudo t50 192.168.1.100 --udp
+3. Send ICMP flood (ping flood)
+bash
+Copy
+Edit
+sudo t50 192.168.1.100 --icmp
+4. Send all protocols for testing
+bash
+Copy
+Edit
+sudo t50 192.168.1.100 --flood
+This will send various types of packets (TCP, ICMP, IGMP, etc.) in rapid sequence to stress test the system.
+
+⚙️ Advanced Usage
+Send multiple packets (e.g., 1000 TCP packets)
+bash
+Copy
+Edit
+sudo t50 192.168.1.100 --tcp --dport 80 --l4count 1000
+--dport 80: Target port 80 (HTTP)
+
+--l4count 1000: Send 1000 Layer 4 packets
+
+📌 Notes
+You must run T50 with sudo or as root.
+
+You can test multiple targets and chain attacks.
+
+Useful for stress testing firewalls, IDS/IPS systems, etc.
+
+📚 To Learn More
+Read the man page:
+
+bash
+Copy
+Edit
+man t50
+Or view the GitHub repo:
+https://github.com/fredericopissarra/t50
+
