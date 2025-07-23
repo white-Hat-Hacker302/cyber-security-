@@ -1,0 +1,82 @@
+ Step 1: Install Volatility
+Kali Linux may already include Volatility. If not, install it:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install volatility
+To check if it’s installed:
+
+bash
+Copy
+Edit
+volatility --info
+✅ Step 2: Obtain a RAM Dump
+You need a memory image file (.raw, .mem, .img) captured from a system. You can use tools like:
+
+LiME (for Linux memory capture)
+
+FTK Imager, DumpIt, or WinPMEM (for Windows)
+
+Example RAM dump name: memory.raw
+
+✅ Step 3: Identify Profile
+Before analysis, identify the profile (OS type):
+
+bash
+Copy
+Edit
+volatility -f memory.raw imageinfo
+This suggests the appropriate profile (e.g., Win7SP1x64).
+
+✅ Step 4: Run Volatility Commands
+Use this format:
+
+bash
+Copy
+Edit
+volatility -f memory.raw --profile=Win7SP1x64 <plugin>
+🔍 Common Volatility Plugins:
+Plugin	Purpose
+pslist	List running processes
+pstree	Show process tree
+psscan	Scan memory for hidden processes
+dlllist	Show loaded DLLs for processes
+cmdline	Show command line args
+filescan	Scan for file objects
+netscan	Scan for network connections
+hashdump	Extract user password hashes
+malfind	Find hidden injected code
+modscan	Scan for kernel modules
+printkey	Print specific registry key
+
+Example:
+bash
+Copy
+Edit
+volatility -f memory.raw --profile=Win7SP1x64 pslist
+volatility -f memory.raw --profile=Win7SP1x64 malfind
+✅ Step 5: Export Files (Optional)
+To extract a file from memory:
+
+bash
+Copy
+Edit
+volatility -f memory.raw --profile=Win7SP1x64 dumpfiles -Q <offset> -D output/
+✅ Tips:
+Always match the correct OS profile.
+
+Combine Volatility with grep, less, or redirect output to files:
+
+bash
+Copy
+Edit
+volatility -f memory.raw --profile=Win7SP1x64 pslist > pslist.txt
+📦 Optional: Install Volatility 3 (Latest)
+bash
+Copy
+Edit
+git clone https://github.com/volatilityfoundation/volatility3
+cd volatility3
+python3 vol.py -h
