@@ -1,0 +1,110 @@
+
+🔹 1. Using the Shodan Website (GUI method)
+Open browser in Kali Linux.
+
+Go to: https://www.shodan.io
+
+Create an account and log in.
+
+Use the search bar for queries like:
+
+vbnet
+Copy
+Edit
+apache
+port:21 country:"PK"
+org:"Google"
+You can explore:
+
+Open ports
+
+Vulnerable devices
+
+Location, ISP info, etc.
+
+🔹 2. Using Shodan Command Line Tool
+✅ Step 1: Install Shodan CLI
+bash
+Copy
+Edit
+sudo apt update
+pip install --upgrade shodan
+✅ Step 2: Get Shodan API Key
+Sign in at https://account.shodan.io/
+
+Copy your API key
+
+✅ Step 3: Initialize Shodan with API key
+bash
+Copy
+Edit
+shodan init YOUR_API_KEY
+✅ Step 4: Run Basic Commands
+Search for Apache servers:
+
+bash
+Copy
+Edit
+shodan search apache
+Search for port 22 (SSH):
+
+bash
+Copy
+Edit
+shodan search port:22
+Get host info:
+
+bash
+Copy
+Edit
+shodan host IP_ADDRESS
+Example:
+
+bash
+Copy
+Edit
+shodan host 8.8.8.8
+🔹 3. Using Python with Shodan API
+✅ Step 1: Install Python Library
+bash
+Copy
+Edit
+pip install shodan
+✅ Step 2: Sample Python Script
+python
+Copy
+Edit
+import shodan
+
+API_KEY = "YOUR_API_KEY"
+api = shodan.Shodan(API_KEY)
+
+try:
+    results = api.search('apache')
+
+    print(f"Results found: {results['total']}")
+    for result in results['matches']:
+        print(f"IP: {result['ip_str']}")
+        print(result['data'])
+        print("-" * 50)
+except Exception as e:
+    print(f"Error: {e}")
+🔹 Useful Shodan CLI Commands
+Command	Description
+shodan myip	Shows your public IP
+shodan stats	Stats about a search query
+shodan count apache	Count how many results
+shodan download	Save results to file
+shodan parse	Parse saved search data
+
+✅ Tip:
+Use filters like:
+
+country:PK → Pakistan
+
+org:"PTCL" → Organization
+
+os:"Windows" → OS filter
+
+product:"OpenSSH" → Specific service
+
