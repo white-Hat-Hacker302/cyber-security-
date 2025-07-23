@@ -1,0 +1,78 @@
+🔧 1. Check Current Rules
+bash
+Copy
+Edit
+sudo iptables -L -v -n
+-L = List rules
+
+-v = Verbose
+
+-n = Show IPs/numbers instead of resolving DNS
+
+🧹 2. Flush (Clear) All Rules
+bash
+Copy
+Edit
+sudo iptables -F
+🚫 3. Block an IP Address
+bash
+Copy
+Edit
+sudo iptables -A INPUT -s 192.168.1.100 -j DROP
+Blocks all incoming traffic from IP 192.168.1.100
+
+✅ 4. Allow an IP Address
+bash
+Copy
+Edit
+sudo iptables -A INPUT -s 192.168.1.101 -j ACCEPT
+🌐 5. Allow Specific Port (e.g., Port 80 for HTTP)
+bash
+Copy
+Edit
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+🔒 6. Block Specific Port
+bash
+Copy
+Edit
+sudo iptables -A INPUT -p tcp --dport 23 -j DROP
+Blocks Telnet port 23
+
+🛡️ 7. Default Policies
+bash
+Copy
+Edit
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT ACCEPT
+Drop all incoming/forwarded traffic by default, allow outgoing.
+
+💾 8. Save iptables Rules (Debian/Kali-based)
+Install iptables-persistent:
+
+bash
+Copy
+Edit
+sudo apt install iptables-persistent
+Then save:
+
+bash
+Copy
+Edit
+sudo netfilter-persistent save
+🔄 9. Restore Saved Rules
+bash
+Copy
+Edit
+sudo netfilter-persistent reload
+🔍 10. View NAT Table (Used for Port Forwarding, etc.)
+bash
+Copy
+Edit
+sudo iptables -t nat -L -n -v
+📌 Tips:
+Always test firewall rules carefully — you can lock yourself out.
+
+Use iptables -I to insert rules at the top.
+
+Use iptables -D to delete specific rules.
