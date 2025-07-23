@@ -1,0 +1,86 @@
+✅ Step-by-Step: How to Use ExifTool in Kali Linux
+📦 1. Install ExifTool (if not already installed)
+Open your terminal and run:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install libimage-exiftool-perl
+Check if it's installed:
+
+bash
+Copy
+Edit
+exiftool -ver
+📁 2. View Metadata of a File
+To extract metadata (Exif, IPTC, XMP, etc.) from a file:
+
+bash
+Copy
+Edit
+exiftool image.jpg
+You can use this on:
+
+Images: .jpg, .png, .tiff
+
+PDFs
+
+Videos: .mp4, .mov, .avi
+
+🔍 3. View Specific Metadata Tags
+Example: Only view the creation date and camera model:
+
+bash
+Copy
+Edit
+exiftool -CreateDate -Model image.jpg
+✏️ 4. Edit Metadata
+You can write new metadata into files.
+
+Example: Change author and comment:
+
+bash
+Copy
+Edit
+exiftool -Author="Sabaz Ali" -Comment="Cyber Forensics Test" image.jpg
+⚠️ By default, ExifTool creates a backup file. Use -overwrite_original to prevent that.
+
+bash
+Copy
+Edit
+exiftool -overwrite_original -Author="Anonymous" image.jpg
+🗃️ 5. Extract Metadata from All Files in a Folder
+Use this to scan multiple files:
+
+bash
+Copy
+Edit
+exiftool /path/to/folder/
+Or recursively (including subfolders):
+
+bash
+Copy
+Edit
+exiftool -r /path/to/folder/
+🧹 6. Remove All Metadata (for privacy)
+To clean all metadata from an image:
+
+bash
+Copy
+Edit
+exiftool -all= -overwrite_original image.jpg
+🔐 Use Case in Cybersecurity
+Use Case	Command Example
+Investigate image origin	exiftool suspect.jpg
+Detect tampering	Compare metadata before & after
+Privacy sanitization	exiftool -all= image.jpg
+Geolocation info	Look for GPSLatitude, GPSLongitude tags
+
+📌 Tip:
+You can save output to a file:
+
+bash
+Copy
+Edit
+exiftool image.jpg > metadata.txt
