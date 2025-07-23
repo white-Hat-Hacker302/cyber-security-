@@ -1,0 +1,71 @@
+✅ Step 1: Install Prerequisites
+Before installing MobSF, make sure your system has the following:
+
+bash
+Copy
+Edit
+sudo apt update && sudo apt upgrade
+sudo apt install git python3 python3-pip virtualenv openjdk-17-jdk
+✅ Step 2: Clone MobSF Repository
+bash
+Copy
+Edit
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+cd Mobile-Security-Framework-MobSF
+✅ Step 3: Set Up Python Environment
+bash
+Copy
+Edit
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+✅ Step 4: Start MobSF Server
+bash
+Copy
+Edit
+python3 manage.py runserver 127.0.0.1:8000
+Open browser and go to: http://127.0.0.1:8000
+
+✅ Step 5: Using MobSF
+📌 For Static Analysis:
+Drag and drop your APK, IPA, or APPX file into the web interface.
+
+MobSF will automatically analyze the file.
+
+You will see reports with:
+
+Permissions
+
+API calls
+
+Security issues
+
+Hardcoded secrets
+
+And more
+
+📌 For Dynamic Analysis (Android only):
+You need to set up MobSF VM/Emulator.
+
+Install Android SDK & Emulator, or use a MobSF Docker container.
+
+Once running, upload APK and click Dynamic Analysis.
+
+✅ Optional: Use Docker (Easier Setup)
+If you prefer Docker:
+
+bash
+Copy
+Edit
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF.git
+cd Mobile-Security-Framework-MobSF
+docker build -t mobsf .
+docker run -it -p 8000:8000 mobsf
+Then open: http://localhost:8000
+
+📘 Tips
+Make sure Java and Python 3.8+ are installed correctly.
+
+You can integrate MobSF API into automated pipelines for CI/CD.
+
+Always analyze apps in a safe and legal environment.
