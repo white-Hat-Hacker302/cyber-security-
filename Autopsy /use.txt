@@ -1,0 +1,110 @@
+ChatGPT said:
+Autopsy is a powerful digital forensics tool used to analyze disk images, recover deleted files, extract metadata, and investigate cyber incidents. It provides a GUI-based interface for The Sleuth Kit (TSK), which is a collection of command-line tools for forensic analysis.
+
+✅ How to Use Autopsy in Kali Linux – Step-by-Step
+🔧 1. Install Autopsy (if not already installed)
+Autopsy usually comes pre-installed in Kali. If not, run:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install autopsy sleuthkit
+▶️ 2. Start Autopsy
+Autopsy runs in a web browser interface.
+
+bash
+Copy
+Edit
+autopsy
+You’ll see output like this:
+
+bash
+Copy
+Edit
+Starting Autopsy Forensic Browser
+Open your browser and go to http://localhost:9999/autopsy
+Open your browser and navigate to that URL.
+
+🧭 3. Create a New Case
+Click "Create New Case"
+
+Enter the following:
+
+Case Name: Example: investigation1
+
+Base Directory: e.g., /home/kali/autopsy_cases
+
+Case Number and Examiner Name (optional)
+
+🗂️ 4. Add a Host
+After creating a case:
+
+Click “Add Host”
+
+Name the host (e.g., suspect_pc)
+
+Set the time zone
+
+Leave other settings default unless you know what to change
+
+💾 5. Add a Disk Image or Local Drive
+Now click “Add Image”, then:
+
+Type: Choose “Disk Image or VM File”
+
+Path: Enter the full path to your image file (e.g., .E01, .dd, .img)
+
+Import Method: Choose “Copy” or “No Copy”
+
+Click Next and follow the wizard
+
+🔍 6. Start Analysis
+Autopsy will parse and analyze the image:
+
+File system structures
+
+Deleted files
+
+Web artifacts
+
+Email data
+
+User activity logs
+
+Autopsy auto-categorizes files (e.g., documents, pictures, executables).
+
+🧰 7. Use Key Features
+Here are some useful features:
+
+Feature	Description
+File Analysis	Browse, open, hash, export files
+Keyword Search	Add search terms to find text in files
+Timeline Analysis	View activity over time
+Web Artifacts	Analyze browser history, cookies, cache
+Metadata Viewer	View image, file, and EXIF metadata
+Hash Lookup	Compare files against hash databases
+Report Generation	Export HTML/PDF case reports
+
+📤 8. Export Evidence/Reports
+You can:
+
+Export files of interest
+
+Generate case reports in PDF/HTML
+
+Export hash lists for further analysis
+
+📌 Example Disk Image to Test
+You can use forensic test images from:
+
+https://digitalcorpora.org
+
+https://www.magnetforensics.com/resources/sample-evidence/
+
+🛑 To Stop Autopsy
+Use Ctrl+C in the terminal where it’s running.
+
+🧠 Tip:
+Autopsy is great for beginner to intermediate forensic analysis. For advanced CLI work, use The Sleuth Kit tools like fls, icat, tsk_recover.
+
