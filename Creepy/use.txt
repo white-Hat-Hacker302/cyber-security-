@@ -1,0 +1,78 @@
+🔧 How to Use Creepy in Kali Linux
+Step 1: ✅ Install Creepy
+Creepy might not come pre-installed in Kali. Here's how to install it:
+
+bash
+Copy
+Edit
+sudo apt update
+sudo apt install creepy
+If it's not available via APT, you can install it via GitHub:
+
+bash
+Copy
+Edit
+sudo apt install python3-pip python3-qtpy git
+git clone https://github.com/ilektrojohn/creepy.git
+cd creepy
+pip3 install -r requirements.txt
+python3 creepy.py
+Step 2: 🚀 Launch Creepy
+If installed correctly, you can launch it using:
+
+bash
+Copy
+Edit
+creepy
+Or from the GUI application menu:
+Applications → Information Gathering → Creepy
+
+Step 3: 🔍 Using Creepy for OSINT
+Enter Target Username:
+
+Input the Twitter, Instagram, or Flickr username you want to gather info about.
+
+Select Data Sources:
+
+Enable APIs like Twitter, Instagram, Flickr, etc.
+
+You'll need to enter API keys for some platforms due to their access restrictions.
+
+Configure Filters (Optional):
+
+Filter by date, location, or keywords.
+
+Start Search:
+
+Click “Gather Info”.
+
+Creepy will extract geotagged data from available images/posts.
+
+View Map:
+
+The geolocation data is plotted on an interactive map view.
+
+You can zoom, select specific pins, and see metadata such as coordinates, time, platform, and more.
+
+📁 Features
+Feature	Description
+🗺️ Map Integration	Plots geolocations from data directly onto a map
+📸 Image Metadata	Extracts EXIF metadata (location, time, device info) from photos
+🐦 Social Media	Supports Twitter, Flickr, Instagram (API-based, may require credentials)
+🕵️ OSINT Use	Great for reconnaissance and tracking online activity patterns
+
+⚠️ Note:
+Instagram API may no longer work due to restrictions.
+
+Twitter API now requires developer account and setup.
+
+Be ethical. Only use Creepy on public profiles or with permission for educational/research purposes.
+
+🧠 Alternative Tools for Geolocation OSINT:
+ExifTool – Extracts geolocation from images
+
+Maltego – Visual link analysis
+
+SpiderFoot – Deep OSINT automation
+
+Metagoofil – Metadata extraction from documents
