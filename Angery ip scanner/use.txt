@@ -1,0 +1,84 @@
+How to Use Angry IP Scanner (Step-by-Step)
+🖥️ 1. Install Angry IP Scanner
+On Windows:
+
+Download from: https://angryip.org/download/
+
+Run the .exe installer.
+
+Follow the installation steps.
+
+On Kali Linux:
+
+bash
+Copy
+Edit
+sudo apt install snapd
+sudo snap install angryip
+Or use the .jar version:
+
+bash
+Copy
+Edit
+sudo apt install openjdk-17-jre
+java -jar ipscan-linux64-*.jar
+🌐 2. Launch the Tool
+Open Angry IP Scanner from your application menu or run via terminal if using .jar.
+
+⚙️ 3. Configure IP Range
+At the top:
+
+You can set:
+
+IP Range (e.g., 192.168.1.1 - 192.168.1.254)
+
+Hostname, Random, or CIDR notation (e.g., 192.168.1.0/24)
+
+🚀 4. Start Scanning
+Click the "Start" button.
+
+Angry IP Scanner will:
+
+Ping each IP
+
+Check if it's alive
+
+Scan for open ports (by default port 80, but you can customize it)
+
+🔍 5. Analyze the Results
+Columns show:
+
+IP Address
+
+Hostname
+
+Ping Time
+
+Open Ports
+
+You can export results (File > Export) as TXT, CSV, or XML.
+
+🛠️ 6. Customize Settings (Optional)
+Go to Tools > Preferences:
+
+Ports to scan
+
+Display options
+
+Ping method (ICMP, TCP, UDP)
+
+Fetchers: You can enable MAC address, NetBIOS name, etc.
+
+✅ Use Cases
+Discover live devices on LAN/WAN
+
+Check for unauthorized devices
+
+Scan for open ports
+
+Identify services on devices
+
+⚠️ Note
+Always use Angry IP Scanner only on networks you own or are authorized to scan to avoid legal and ethical issues.
+
+Would you like an example scanning command or a use case walkthrough (like scanning your local Wi-Fi)?
