@@ -1,0 +1,48 @@
+🔍 How APT28 (Fancy Bear) Hacks – Tools & Techniques
+APT28 uses a wide range of custom malware, open-source tools, zero-days, and social engineering tactics. Here's a breakdown of their tools and how they use them:
+
+🧰 APT28 Hacking Tools & How They Use Them
+Tool / Malware Name	Use & Description
+X-Agent (CHOPSTICK)	A modular backdoor that collects keystrokes, screenshots, files, and system data. Used in Windows, iOS, Android, macOS.
+X-Tunnel	A network tunneling tool to hide traffic (used with X-Agent). Helps bypass firewalls and exfiltrate data.
+SEDNIT / Sofacy	First-stage downloader for delivering payloads like X-Agent. Delivered via phishing emails.
+JHUHUGIT	Credential harvester for capturing victim usernames and passwords.
+GAMEFISH / SedUploader	Another downloader used to gain initial access and deploy more sophisticated tools.
+Dealer’s Choice	A malicious Flash object embedded in Microsoft Word documents to exploit vulnerabilities.
+Komplex	macOS malware used for espionage and persistence on Apple devices.
+Downdelph	Custom malware used for reconnaissance and downloading additional payloads.
+Drovorub	Linux malware used for rootkit access, file transfer, and command execution. Linked to GRU hackers.
+
+🎯 APT28 Techniques
+Technique	Description
+Phishing (Spear-phishing)	Fake emails with malicious Word docs or links to harvest credentials or deliver malware.
+Zero-Day Exploits	Used in Microsoft Word, Flash, Windows Kernel vulnerabilities.
+Credential Harvesting	Capturing login credentials via fake sites or malware.
+Watering Hole Attacks	Compromising websites frequently visited by targets.
+Command and Control (C2)	Encrypts communications with external servers to control infected systems.
+Living Off the Land (LOTL)	Uses native tools like PowerShell, WMI, and Windows utilities to avoid detection.
+Lateral Movement	After access, spreads through internal networks using Mimikatz and other tools.
+
+🏁 Common Targets
+NATO and Western military
+
+U.S. Democratic National Committee (DNC)
+
+Ministries of Foreign Affairs
+
+Journalists and media outlets
+
+Energy and aerospace companies
+
+🔐 Defensive Measures Against APT28
+Disable macros in Microsoft Office
+
+Patch systems quickly (they use unpatched exploits)
+
+Monitor PowerShell & WMI usage
+
+Use behavioral detection tools (EDR)
+
+Employ multi-factor authentication (MFA)
+
+Train staff to recognize phishing
