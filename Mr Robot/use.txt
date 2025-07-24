@@ -1,0 +1,74 @@
+🔧 Mr. Robot Hacking Tools (Used in the Show)
+🖥️ 1. Linux Distributions
+Kali Linux – The main OS used by Elliot and fsociety for penetration testing.
+
+Tails OS – Used for anonymity and privacy (amnesic OS that runs from USB).
+
+📡 2. Network Scanning & Recon
+Nmap – For scanning networks, identifying open ports, services.
+
+Netcat (nc) – A versatile networking tool used for backdoors, port scanning, chat, etc.
+
+Angry IP Scanner – Fast network scanner, often seen during quick recon scenes.
+
+🎯 3. Exploitation Tools
+Metasploit Framework – For exploiting vulnerabilities and developing payloads.
+
+BeEF (Browser Exploitation Framework) – Used to exploit web browser vulnerabilities.
+
+SET (Social-Engineer Toolkit) – For phishing, fake login pages, and email spoofing.
+
+📱 4. Mobile & Bluetooth
+Wifite / Aircrack-ng – For cracking Wi-Fi passwords.
+
+Bluesnarfing tools – Seen used for hacking into mobile phones via Bluetooth.
+
+🧠 5. Social Engineering & Phishing
+Custom Phishing Pages – fsociety uses fake login pages and cloned sites.
+
+Spoofing Emails – Tools used to craft legitimate-looking spoofed messages.
+
+🧰 6. Post-Exploitation & Payloads
+Reverse Shells (bash, PHP, PowerShell) – To maintain remote access to compromised systems.
+
+Keyloggers – Custom or off-the-shelf tools for capturing keystrokes.
+
+🔐 7. Password Attacks
+John the Ripper – For brute-force password cracking.
+
+Hydra – Network login cracker (SSH, FTP, Telnet, etc.).
+
+Hashcat – GPU-based password cracking tool.
+
+🧹 8. Data Wiping / Destruction
+Darik’s Boot and Nuke (DBAN) – Used to wipe drives.
+
+rm -rf / – A symbolic Linux command to destroy system files.
+
+🔍 9. Digital Forensics / Reverse Engineering
+Volatility – For memory forensics (RAM dumps).
+
+Binwalk – For firmware analysis.
+
+Wireshark – For packet sniffing and protocol analysis.
+
+🌐 10. Anonymity & Privacy
+Tor Browser – Used to access dark web and avoid tracking.
+
+PGP Encryption (GnuPG) – For encrypted communications.
+
+🧠 Other Notables
+Raspberry Pi – Used in physical hacks and payload deployment.
+
+USB Rubber Ducky – Programmable USB keyboard used for quick exploitation.
+
+🧨 Real Hacks Shown in the Series (Examples)
+Raspberry Pi in HVAC system (Season 1)
+
+CryptoLocker-style ransomware
+
+Evil maid attack (in-person USB payload delivery)
+
+ATM malware attack
+
+Exploiting Android phones via infected app
