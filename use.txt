@@ -1,0 +1,118 @@
+Bilkul. Neeche 100 Kali Linux cybersecurity tools ki practical list hai. Main Beginner / Intermediate / Pro level aur safe/authorized lab commands bhi de raha hoon.
+
+⚠️ Commands ko apne system, CTF/lab, ya jis system ki explicit permission ho usi par run karein.
+
+🌐 1–20: Network Recon & Scanning
+#	Tool	Use	Level	Important command
+1	Nmap	Port/service scanning	Beginner	nmap -sV 192.168.1.1
+2	RustScan	Fast port discovery	Intermediate	rustscan -a 192.168.1.1
+3	Masscan	High-speed scanning	Pro	masscan 192.168.1.0/24 -p80,443
+4	Netdiscover	LAN host discovery	Beginner	sudo netdiscover
+5	arp-scan	LAN device discovery	Beginner	sudo arp-scan --localnet
+6	Fping	Host availability	Beginner	fping -a 192.168.1.1
+7	Hping3	Packet/network testing	Pro	sudo hping3 -c 4 192.168.1.1
+8	Netcat	Network troubleshooting	Intermediate	nc -vz 192.168.1.1 22
+9	Socat	Network data relay/testing	Pro	socat - TCP:127.0.0.1:80
+10	Nmap NSE	Automated Nmap scripts	Pro	nmap --script safe 192.168.1.1
+11	DNSenum	DNS enumeration	Intermediate	dnsenum example.com
+12	Fierce	DNS reconnaissance	Intermediate	fierce --domain example.com
+13	DNSrecon	DNS information	Beginner	dnsrecon -d example.com
+14	Whois	Domain registration info	Beginner	whois example.com
+15	Dig	DNS queries	Beginner	dig example.com
+16	Host	DNS lookup	Beginner	host example.com
+17	Traceroute	Network path	Beginner	traceroute example.com
+18	Amass	Attack-surface discovery	Pro	amass enum -passive -d example.com
+19	Subfinder	Subdomain discovery	Intermediate	subfinder -d example.com
+20	httpx	HTTP service probing	Intermediate	httpx -u https://example.com
+🌐 21–40: Web Security
+#	Tool	Use	Level	Important command
+21	Burp Suite	Web security testing	Intermediate	burpsuite
+22	OWASP ZAP	Web security scanner	Beginner	zaproxy
+23	Nikto	Web server assessment	Beginner	nikto -h https://example.com
+24	Gobuster	Directory discovery	Intermediate	gobuster dir -u https://example.com -w wordlist.txt
+25	Feroxbuster	Content discovery	Intermediate	feroxbuster -u https://example.com
+26	ffuf	Web fuzzing	Pro	ffuf -u https://example.com/FUZZ -w wordlist.txt
+27	Wapiti	Web vulnerability scanning	Intermediate	wapiti -u https://example.com
+28	WhatWeb	Technology fingerprinting	Beginner	whatweb example.com
+29	WPScan	WordPress security testing	Intermediate	wpscan --url https://example.com
+30	SQLmap	SQL injection testing	Pro	sqlmap -u "https://lab.local/item?id=1" --batch
+31	Commix	Command-injection testing	Pro	commix -u "https://lab.local/?id=1"
+32	Arjun	HTTP parameter discovery	Intermediate	arjun -u https://lab.local/
+33	Dalfox	XSS testing	Pro	dalfox url "https://lab.local/?q=test"
+34	Nuclei	Template-based vulnerability scanning	Pro	nuclei -u https://lab.local
+35	Nessus	Vulnerability assessment	Pro	GUI
+36	OpenVAS/Greenbone	Vulnerability management	Pro	Web GUI
+37	SearchSploit	Exploit research	Intermediate	searchsploit apache 2.4
+38	Wfuzz	Web fuzzing	Pro	wfuzz -c -z file,wordlist.txt https://lab.local/FUZZ
+39	Dirsearch	Directory discovery	Beginner	dirsearch -u https://lab.local
+40	Proxychains	Proxy-aware connections	Pro	proxychains4 curl https://example.com
+📡 41–55: Wireless Security
+#	Tool	Use	Level	Important command
+41	Aircrack-ng	Wi-Fi auditing	Intermediate	aircrack-ng capture.cap
+42	Airodump-ng	Wi-Fi packet capture	Intermediate	sudo airodump-ng wlan0
+43	Aireplay-ng	Wireless frame testing	Pro	aireplay-ng --help
+44	Airbase-ng	Wireless testing	Pro	airbase-ng --help
+45	Kismet	Wireless monitoring	Intermediate	kismet
+46	Wifite	Automated Wi-Fi auditing	Pro	sudo wifite --help
+47	Reaver	WPS security auditing	Pro	reaver --help
+48	Bully	WPS auditing	Pro	bully --help
+49	PixieWPS	WPS research	Pro	pixiewps --help
+50	Fern WiFi Cracker	Wireless auditing GUI	Intermediate	fern-wifi-cracker
+51	WiFi Pumpkin3	Wireless security lab	Pro	wifi-pumpkin3
+52	hcxdumptool	Wi-Fi capture/testing	Pro	hcxdumptool --help
+53	hcxtools	Wi-Fi capture analysis	Pro	hcxpcapngtool --help
+54	MDK4	Wireless protocol testing	Pro	mdk4 --help
+55	Wifiphisher	Wi-Fi security awareness/testing	Pro	wifiphisher --help
+🔑 56–68: Password & Authentication Auditing
+#	Tool	Use	Level	Important command
+56	Hashcat	Password/hash auditing	Pro	hashcat --help
+57	John the Ripper	Password auditing	Intermediate	john hashes.txt
+58	Hydra	Authentication testing	Pro	hydra -h
+59	Medusa	Login auditing	Pro	medusa -h
+60	Ncrack	Network authentication auditing	Pro	ncrack --help
+61	CeWL	Custom wordlists	Intermediate	cewl https://lab.local -w words.txt
+62	Crunch	Wordlist generation	Intermediate	crunch 4 6 0123456789
+63	Hash-Identifier	Identify hash types	Beginner	hash-identifier
+64	Ophcrack	Windows password auditing	Intermediate	ophcrack --help
+65	Chntpw	Windows SAM password recovery	Pro	chntpw --help
+66	RSMangler	Wordlist manipulation	Intermediate	rsmangler --help
+67	Wordlists	Password-testing dictionaries	Beginner	ls /usr/share/wordlists/
+68	Unshadow	Combine passwd/shadow data	Pro	unshadow passwd shadow
+🕵️ 69–78: OSINT & Recon
+#	Tool	Use	Level	Important command
+69	theHarvester	Email/domain OSINT	Beginner	theHarvester -d example.com -b bing
+70	Maltego	OSINT relationship analysis	Intermediate	maltego
+71	Recon-ng	Recon framework	Intermediate	recon-ng
+72	SpiderFoot	Automated OSINT	Intermediate	spiderfoot -l 127.0.0.1:5001
+73	Sherlock	Username discovery	Intermediate	sherlock username
+74	ExifTool	Metadata analysis	Beginner	exiftool image.jpg
+75	Metagoofil	Metadata gathering	Intermediate	metagoofil --help
+76	Photon	Website OSINT crawler	Intermediate	python3 photon.py -u https://lab.local
+77	Maigret	Username OSINT	Intermediate	maigret username
+78	GHunt	Google-account OSINT research	Pro	ghunt --help
+🔬 79–88: Forensics & Reverse Engineering
+#	Tool	Use	Level	Important command
+79	Autopsy	Digital forensics	Intermediate	autopsy
+80	Sleuth Kit	Disk forensic analysis	Pro	fls image.dd
+81	Volatility	Memory forensics	Pro	vol -f memory.raw windows.info
+82	Binwalk	Firmware/file analysis	Intermediate	binwalk firmware.bin
+83	Foremost	File recovery	Intermediate	foremost image.dd
+84	Scalpel	File carving	Pro	scalpel image.dd
+85	Ghidra	Reverse engineering	Pro	ghidra
+86	Radare2	Binary analysis	Pro	r2 ./program
+87	Cutter	Radare2 GUI	Pro	cutter
+88	GDB	Debugging/binary analysis	Pro	gdb ./program
+🛡️ 89–100: Blue Team, Traffic & Security Analysis
+#	Tool	Use	Level	Important command
+89	Wireshark	Packet analysis	Beginner	wireshark
+90	TShark	CLI packet analysis	Intermediate	tshark -i eth0
+91	Tcpdump	Packet capture	Beginner	sudo tcpdump -i eth0
+92	Zeek	Network security monitoring	Pro	zeek -i eth0
+93	Suricata	IDS/IPS	Pro	sudo suricata -T -c /etc/suricata/suricata.yaml
+94	Snort	IDS/IPS	Pro	snort -T -c /etc/snort/snort.conf
+95	YARA	Malware/file detection rules	Pro	yara rule.yar sample
+96	ClamAV	Malware scanning	Beginner	clamscan file
+97	Chkrootkit	Rootkit checks	Intermediate	sudo chkrootkit
+98	Lynis	Linux security auditing	Intermediate	sudo lynis audit system
+99	OpenSCAP	Security compliance assessment	Pro	oscap --help
+100	Wazuh	SIEM/security monitoring	Pro	Agent/manager GUI
